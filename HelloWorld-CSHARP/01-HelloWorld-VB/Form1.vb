@@ -7,4 +7,8 @@ Public Class Form1
 		oPersona.apellido = "Garcia"
 		MessageBox.Show($"Soy {oPersona.nombre} {oPersona.apellido}")
 	End Sub
+
+	Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+	End Sub
 End Class
