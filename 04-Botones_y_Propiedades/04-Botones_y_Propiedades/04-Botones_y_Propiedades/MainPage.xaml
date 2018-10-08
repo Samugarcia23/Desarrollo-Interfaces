@@ -8,21 +8,36 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Name="stackPanel1" HorizontalAlignment="Center" Width="600">
-        <Button Content="Boton 1" Foreground="White" HorizontalAlignment="center" Background="Blue" Height="70" Width="200" FontFamily="Verdana" FontSize="16" BorderBrush="Yellow"></Button>
+    <StackPanel Name="stackPanel1" HorizontalAlignment="Center" Width="1500" Margin="0,0,0,0" VerticalAlignment="Stretch" BorderBrush="Brown" BorderThickness="15" CornerRadius="50">
+        <Button Content="Boton 1" Foreground="White" HorizontalAlignment="Center" Background="Blue" Height="auto" Width="auto" FontFamily="Verdana" FontSize="16" BorderBrush="Yellow" Margin="20"  VerticalAlignment="Center" Padding="20, 60, 20, 60" />
 
-        <Button>
-            <Button.Content>Boton 2</Button.Content>
-            <Button.HorizontalAlignment>Center</Button.HorizontalAlignment>
-            <Button.Background>Blue</Button.Background>
-            <Button.Foreground>White</Button.Foreground>
-            <Button.Width>200</Button.Width>
-            <Button.Height>70</Button.Height>
-            <Button.BorderBrush>Yellow</Button.BorderBrush>
-            <Button.FontFamily>Verdana</Button.FontFamily>
-            <Button.FontSize>16</Button.FontSize>
+        <Button Margin="0,0,0,0" VerticalAlignment="Center">
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Center</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.Background>
+                <Brush>Blue</Brush>
+            </Button.Background>
+            <Button.Foreground>
+                <Brush>White</Brush>
+            </Button.Foreground>
+            <Button.Width>
+                <x:Double>200</x:Double>
+            </Button.Width>
+            <Button.Height>
+                <x:Double>70</x:Double>
+            </Button.Height>
+            <Button.BorderBrush>
+                <Brush>Yellow</Brush>
+            </Button.BorderBrush>
+            <Button.FontFamily>
+                <FontFamily>Verdana</FontFamily>
+            </Button.FontFamily>
+            <Button.FontSize>
+                <x:Double>16</x:Double>
+            </Button.FontSize> Boton 2
         </Button>
-        
-        
+
+
     </StackPanel>
 </Page>
