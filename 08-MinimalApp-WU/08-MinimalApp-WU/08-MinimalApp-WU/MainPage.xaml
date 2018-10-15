@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="_08_MinimalApp_WU.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_08_MinimalApp_WU"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel >
+        <StackPanel Height="35" Name="spTopPage" Margin="16, 8, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <TextBlock Text="Mi Aplicacion minimalista"></TextBlock>
+        </StackPanel>
+        <StackPanel Name="spTextoGrande" Height="100" Margin="16, 4, 16, 8" RelativePanel.Below="spTopPage" BorderBrush="Black" BorderThickness="3" RelativePanel.AlignLeftWith="spTopPage"  RelativePanel.AlignRightWith="spTopPage">
+            <TextBlock TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, virtute eruditi adipiscing cu est. Ne perpetua scribentur vix, ei sea gubergren adipiscing. Noster sanctus accumsan in est, cu nostro sensibus suscipiantur his, elitr eloquentiam ea per. An per facilis maiestatis constituam. His et graeci signiferumque, qui ea saperet accumsan electram. Ea sit magna munere aperiri. Justo simul laboramus at vim. Vel in atqui tempor appetere, mea etiam temporibus ad."></TextBlock>
+        </StackPanel>
+        <RelativePanel Name="rpContent" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="spTextoGrande" Margin="16, 4, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.Above="spBottom">
+            
+        </RelativePanel>
+
+        <StackPanel Name="spBottom"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="rpContent" Margin="16, 8, 16, 16" BorderBrush="Black" BorderThickness="3" Height="80"></StackPanel>
+    </RelativePanel>
+</Page>
