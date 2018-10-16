@@ -13,12 +13,23 @@
             <TextBlock Text="Mi Aplicacion minimalista"></TextBlock>
         </StackPanel>
         <StackPanel Name="spTextoGrande" Height="100" Margin="16, 4, 16, 8" RelativePanel.Below="spTopPage" BorderBrush="Black" BorderThickness="3" RelativePanel.AlignLeftWith="spTopPage"  RelativePanel.AlignRightWith="spTopPage">
-            <TextBlock TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, virtute eruditi adipiscing cu est. Ne perpetua scribentur vix, ei sea gubergren adipiscing. Noster sanctus accumsan in est, cu nostro sensibus suscipiantur his, elitr eloquentiam ea per. An per facilis maiestatis constituam. His et graeci signiferumque, qui ea saperet accumsan electram. Ea sit magna munere aperiri. Justo simul laboramus at vim. Vel in atqui tempor appetere, mea etiam temporibus ad."></TextBlock>
+            <TextBlock TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, virtute eruditi adipiscing cu est. Ne perpetua scribentur vix, ei sea gubergren adipiscing."></TextBlock>
         </StackPanel>
-        <RelativePanel Name="rpContent" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="spTextoGrande" Margin="16, 4, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.Above="spBottom">
-            
+        <RelativePanel Name="rpContent" Height="auto" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="spTextoGrande" Margin="16, 4, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.Above="spBottom">
+            <Rectangle Name="rctNaranja" Fill="Coral" Height="auto" Width="auto" MinHeight="100" MinWidth="100" RelativePanel.AlignLeftWithPanel="True" Margin="40,40,0,0" ></Rectangle>
+            <Rectangle Name="rctAzul" Fill="LightBlue" Height="auto" Width="auto" MinHeight="100" MinWidth="100" RelativePanel.RightOf="rctNaranja" Margin="20,40,0,0"></Rectangle>
+            <Rectangle Fill="LightGreen" Height="auto" Width="auto" MinHeight="100" MinWidth="100" RelativePanel.Below="rctAzul" Margin="40,20,0,0" RelativePanel.AlignLeftWithPanel="True"></Rectangle>
+            <StackPanel Name="spTextBlock" BorderBrush="Black" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="rctAzul" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
+            </StackPanel>
+            <StackPanel Name="spTextBlock2" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" RelativePanel.Below="spTextBlock" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="rctAzul">
+                <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
+            </StackPanel>
+            <StackPanel Name="spTextBlock3" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" BorderThickness="3" RelativePanel.Below="spTextBlock2" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="rctAzul" >
+                <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
+            </StackPanel>
         </RelativePanel>
 
-        <StackPanel Name="spBottom"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="rpContent" Margin="16, 8, 16, 16" BorderBrush="Black" BorderThickness="3" Height="80"></StackPanel>
+        <StackPanel Name="spBottom"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" Margin="16, 8, 16, 16" BorderBrush="Black" BorderThickness="3" Height="80"></StackPanel>
     </RelativePanel>
 </Page>
