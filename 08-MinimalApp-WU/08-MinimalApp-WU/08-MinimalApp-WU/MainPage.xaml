@@ -16,16 +16,26 @@
             <TextBlock TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, virtute eruditi adipiscing cu est. Ne perpetua scribentur vix, ei sea gubergren adipiscing."></TextBlock>
         </StackPanel>
         <RelativePanel Name="rpContent" Height="auto" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="spTextoGrande" Margin="16, 4, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.Above="spBottom">
-            <Rectangle Name="rctNaranja" Fill="Coral" Height="auto" Width="auto" MinHeight="100" MinWidth="100" RelativePanel.AlignLeftWithPanel="True" Margin="40,40,0,0" ></Rectangle>
-            <Rectangle Name="rctAzul" Fill="LightBlue" Height="auto" Width="auto" MinHeight="100" MinWidth="100" RelativePanel.RightOf="rctNaranja" Margin="20,40,0,0"></Rectangle>
-            <Rectangle Fill="LightGreen" Height="auto" Width="auto" MinHeight="100" MinWidth="100" RelativePanel.Below="rctAzul" Margin="40,20,0,0" RelativePanel.AlignLeftWithPanel="True"></Rectangle>
-            <StackPanel Name="spTextBlock" BorderBrush="Black" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="rctAzul" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <Grid RelativePanel.AlignLeftWithPanel="True" Name="grdColores">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Rectangle Name="rctNaranja" Grid.Row="0" Grid.Column="0" Fill="Coral" Height="auto" Width="auto" MinHeight="100" MinWidth="100"  Margin="40,40,0,0" ></Rectangle>
+                <Rectangle Name="rctAzul" Grid.Row="0" Grid.Column="1" Fill="LightBlue" Height="auto" Width="auto" MinHeight="100" MinWidth="100" Margin="20,40,0,0"></Rectangle>
+                <Rectangle Fill="LightGreen" Grid.Row="1" Grid.Column="0" Height="auto" Width="auto" MinHeight="100" MinWidth="100" Margin="40,20,0,0" ></Rectangle>
+            </Grid>
+            <StackPanel Name="spTextBlock" BorderBrush="Black" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                 <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
             </StackPanel>
-            <StackPanel Name="spTextBlock2" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" RelativePanel.Below="spTextBlock" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="rctAzul">
+            <StackPanel Name="spTextBlock2" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" RelativePanel.Below="spTextBlock" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores">
                 <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
             </StackPanel>
-            <StackPanel Name="spTextBlock3" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" BorderThickness="3" RelativePanel.Below="spTextBlock2" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="rctAzul" >
+            <StackPanel Name="spTextBlock3" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" BorderThickness="3" RelativePanel.Below="spTextBlock2" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores" >
                 <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
             </StackPanel>
         </RelativePanel>
