@@ -7,15 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    
+    <!--El panel global es un Relative layout, en el cual estaran todos los demas elementos-->
     <RelativePanel >
+        
+        <!--Este stackPanel llamado spTopPage(ya que es el que esta en el top), contine un textblock con el 'titulo'-->
         <StackPanel Height="35" Name="spTopPage" Margin="16, 8, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <TextBlock Text="Mi Aplicacion minimalista"></TextBlock>
         </StackPanel>
+        
+        <!--Este stackpanel llamado spTGextoGrande(ya que es el que tiene mas texto), contiene un textblock con dicho texto-->
         <StackPanel Name="spTextoGrande" Height="100" Margin="16, 4, 16, 8" RelativePanel.Below="spTopPage" BorderBrush="Black" BorderThickness="3" RelativePanel.AlignLeftWith="spTopPage"  RelativePanel.AlignRightWith="spTopPage">
             <TextBlock TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, virtute eruditi adipiscing cu est. Ne perpetua scribentur vix, ei sea gubergren adipiscing."></TextBlock>
         </StackPanel>
+        
+        <!--RelativePanel que contiene varios elementos como un grid y varios stackPanel-->
         <RelativePanel Name="rpContent" Height="auto" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" RelativePanel.Below="spTextoGrande" Margin="16, 4, 16, 8" BorderBrush="Black" BorderThickness="3" RelativePanel.Above="spBottom">
+           
+            <!--Grid con 2 filas y 2 columnas que contiene imagenes-->           
             <Grid RelativePanel.AlignLeftWithPanel="True" Name="grdColores">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -25,21 +34,26 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+
+                <!--Las imagenes en este caso son rectangulos de colores. Cada uno de ellos ocupa un lugar en el grid-->
                 <Rectangle Name="rctNaranja" Grid.Row="0" Grid.Column="0" Fill="Coral" Height="auto" Width="auto" MinHeight="100" MinWidth="100"  Margin="40,40,0,0" ></Rectangle>
                 <Rectangle Name="rctAzul" Grid.Row="0" Grid.Column="1" Fill="LightBlue" Height="auto" Width="auto" MinHeight="100" MinWidth="100" Margin="20,40,0,0"></Rectangle>
                 <Rectangle Fill="LightGreen" Grid.Row="1" Grid.Column="0" Height="auto" Width="auto" MinHeight="100" MinWidth="100" Margin="40,20,0,0" ></Rectangle>
             </Grid>
-            <StackPanel Name="spTextBlock" BorderBrush="Black" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+
+            <!--StackPanels que contienen un textblock los cuales se adaptan en caso de cambiar el tamaño de la ventana-->
+            <StackPanel Name="spTextBlock" BorderBrush="Black" BorderThickness="3" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                 <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
             </StackPanel>
-            <StackPanel Name="spTextBlock2" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" RelativePanel.Below="spTextBlock" BorderThickness="3" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores">
+            <StackPanel Name="spTextBlock2" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" RelativePanel.Below="spTextBlock" BorderThickness="3" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores">
                 <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
             </StackPanel>
-            <StackPanel Name="spTextBlock3" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" BorderThickness="3" RelativePanel.Below="spTextBlock2" Height="auto" Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores" >
+            <StackPanel Name="spTextBlock3" RelativePanel.AlignRightWithPanel="True" BorderBrush="Black" BorderThickness="3" RelativePanel.Below="spTextBlock2"  Margin="20, 40, 40, -20" RelativePanel.RightOf="grdColores" >
                 <TextBlock Text="Лорем ипсум долор сит амет, те пер тантас популо импетус." TextWrapping="Wrap"></TextBlock>
             </StackPanel>
         </RelativePanel>
 
-        <StackPanel Name="spBottom"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" Margin="16, 8, 16, 16" BorderBrush="Black" BorderThickness="3" Height="80"></StackPanel>
+        <!--StackPanel que se encuentra en el fondo de la aplicacion-->
+        <StackPanel Name="spBottom"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="spTopPage" RelativePanel.AlignRightWith="spTopPage" Margin="16, 8, 16, 16" BorderBrush="Black" BorderThickness="3" Height="40"></StackPanel>
     </RelativePanel>
 </Page>
