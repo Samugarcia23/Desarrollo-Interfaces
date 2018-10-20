@@ -9,7 +9,7 @@
     
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -98,7 +98,52 @@
             </Pivot>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button Margin="20" Content="Go" Click="Button_Click"></Button>
+            <Button Margin="20" Content="Ir a la Pagina 2" Click="Button_Click"></Button>
         </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBox AcceptsReturn="True" Text="Pulsa Enter" IsSpellCheckEnabled="True"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="3">
+            <PasswordBox></PasswordBox>
+        </StackPanel>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBoxItem>PSP</ListBoxItem>
+                <ListBoxItem>DI</ListBoxItem>
+                <ListBoxItem>PMOV</ListBoxItem>
+                <ListBoxItem>SGE</ListBoxItem>
+                <ListBoxItem>EIE</ListBoxItem>
+                <ListBoxItem>ACDAT</ListBoxItem>
+                <ListBoxItem>PROY</ListBoxItem>
+            </ListBox>
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <ComboBox SelectedIndex="0">
+                <ComboBoxItem>1 EVALUACION</ComboBoxItem>
+                <ComboBoxItem>2 EVALUACION</ComboBoxItem>
+                <ComboBoxItem>EVALUACION FINAL</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+            <Slider Value="{Binding ElementName=progress, Path=Value, Mode=TwoWay}" Minimum="0" Maximum="100"  Margin="0"/>
+            <ProgressBar Width="300" Height="30" x:Name="progress" Value="30" HorizontalAlignment="Right" Margin="0,20,0,0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <CalendarView></CalendarView>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <CalendarDatePicker HorizontalAlignment="Center"></CalendarDatePicker>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="2">
+            <DatePicker></DatePicker>
+        </StackPanel>
+        <RelativePanel Grid.Row="3" Grid.Column="3">
+            
+            <!--Creacion de la imagen de destino-->
+            <Image x:Name="DestinationImage"
+                Width="100" Height="100"
+                Margin="20"
+                Source="Assets/icon.png" />
+        </RelativePanel>
     </Grid>
 </Page>
