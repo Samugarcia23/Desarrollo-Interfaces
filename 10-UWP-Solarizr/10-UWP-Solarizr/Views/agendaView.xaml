@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="_10_UWP_Solarizr.Views.agendaView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_10_UWP_Solarizr.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!--MapServiceToken="Aki1mGMp5qJFbLJ7bNOxWgC6PXmTxDAbjQ20TslJCBqQRDqOTd5E0vT-KwjuuEIj"-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <RelativePanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Name="tbTop" Margin="50, 40, 0, 10" Text="Esta es tu agenda de hoy:" FontSize="18"></TextBlock>
+            <Maps:MapControl
+                x:Name="MapControl1"            
+                ZoomInteractionMode="GestureAndControl"
+                TiltInteractionMode="GestureAndControl"   
+                RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="tbTop" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="30,10,30,30"/>
+        </RelativePanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <RelativePanel Name="rpText1" Grid.Row="0" Grid.Column="0" Margin="30, 30, 30, 30" VerticalAlignment="Center" PointerPressed="rpText1_PointerPressed"> 
+                <TextBlock Name="tbMain1" FontSize="20" Text="Calle Nueva Orleans 12, 1ºF"></TextBlock>
+                <TextBlock Name="tbGray1"  FontSize="15" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="apbFlecha1" Text="Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam." Foreground="Gray" TextWrapping="Wrap" RelativePanel.Below="tbMain1"></TextBlock>
+                <Image Source="../Images/IconosAgenda/right-arrow.png" Name="apbFlecha1" RelativePanel.AlignRightWithPanel="True" Margin="10, 10,0,0"  Height="40" Width="40"></Image>
+            </RelativePanel>
+
+            <RelativePanel Name="rpText2" Grid.Row="1" Grid.Column="0" Margin="30, 30, 30, 30" VerticalAlignment="Center" PointerPressed="rpText1_PointerPressed">
+                <TextBlock Name="tbMain2" FontSize="20" Text="Avenida Circular 45, 3ºA"></TextBlock>
+                <TextBlock Name="tbGray2"  FontSize="15" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="apbFlecha2" Text="Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam." Foreground="Gray" TextWrapping="Wrap" RelativePanel.Below="tbMain2"></TextBlock>
+                <Image Source="../Images/IconosAgenda/right-arrow.png" Name="apbFlecha2" RelativePanel.AlignRightWithPanel="True" Margin="0, 10,0,0"  Height="40" Width="40"></Image>
+            </RelativePanel>
+
+            <RelativePanel Name="rpText3" Grid.Row="2" Grid.Column="0" Margin="30, 30, 30, 30" VerticalAlignment="Center" PointerPressed="rpText1_PointerPressed">
+                <TextBlock Name="tbMain3" FontSize="20" Text="Calle Super Nova 12, 5ºD"></TextBlock>
+                <TextBlock Name="tbGray3"  FontSize="15" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="apbFlecha3" Text="Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam." Foreground="Gray" TextWrapping="Wrap" RelativePanel.Below="tbMain3"></TextBlock>
+                <Image Source="../Images/IconosAgenda/right-arrow.png" Name="apbFlecha3" RelativePanel.AlignRightWithPanel="True" Margin="0, 10,0,0"  Height="40" Width="40"></Image>
+            </RelativePanel>
+
+            <RelativePanel Name="rpText4" Grid.Row="3" Grid.Column="0" Margin="30, 30, 30, 30" VerticalAlignment="Center" PointerPressed="rpText1_PointerPressed">
+                <TextBlock Name="tbMain4" FontSize="20" Text="Calle Asfaltada 32, Bajo B"></TextBlock>
+                <TextBlock Name="tbGray4"  FontSize="15" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="apbFlecha4" Text="Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam." Foreground="Gray" TextWrapping="Wrap" RelativePanel.Below="tbMain4"></TextBlock>
+                <Image Source="../Images/IconosAgenda/right-arrow.png" Name="apbFlecha4" RelativePanel.AlignRightWithPanel="True" Margin="0, 10,0,0"  Height="40" Width="40"></Image>
+            </RelativePanel>
+            
+        </Grid>
+    </Grid>
+</Page>

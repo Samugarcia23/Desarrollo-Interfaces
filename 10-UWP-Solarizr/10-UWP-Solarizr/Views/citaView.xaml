@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="_10_UWP_Solarizr.Views.citaView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_10_UWP_Solarizr.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <RelativePanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Name="tbTop" Margin="50, 40, 0, 0" Text="Calle Nueva Orleans 12, 1ºF" FontSize="18"></TextBlock>
+                <TextBlock Name="tbBelowTop" Margin="50, 0, 0, 10" Text="Sevilla 41005, Spain" FontSize="12" Foreground="Gray" RelativePanel.Below="tbTop"></TextBlock>
+                <Maps:MapControl
+                x:Name="MapControl1"            
+                ZoomInteractionMode="GestureAndControl"
+                TiltInteractionMode="GestureAndControl" 
+                RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="tbBelowTop" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="30,10,30,60"/>
+                <Button RelativePanel.AlignBottomWithPanel="True" Content="Crear ruta" Height="40" Width="100" Margin="30,0,0,10" ToolTipService.ToolTip="Crear una ruta desde tu ubicación a la ubicación del cliente" Click="Button_Click"></Button>
+            </RelativePanel>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <Image Source="../Images/Fotos/tejado1.jpg" Margin="10" ></Image>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                    <Image Source="../Images/Fotos/tejado3.jpg" Margin="10"></Image>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Grid.Column="2">
+                    <Image Source="../Images/Fotos/tejado2.jpg" Margin="10" ></Image>
+                </StackPanel>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Right">
+                    <AppBarButton Icon="Delete" ToolTipService.ToolTip="Eliminar fotos seleccionadas"></AppBarButton>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">
+                    <AppBarButton Icon="Add" ToolTipService.ToolTip="Añadir foto"></AppBarButton>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Datos del cliente: " FontSize="18" Margin="10,50,0,10" ></TextBlock>
+                <TextBox Text="Armando Podadera" Margin="10,0,50,0" Width="auto" TextWrapping="Wrap" AcceptsReturn="False" Header="Nombre"></TextBox>
+                <TextBox Text="666666666" Margin="10,20,50,0" Width="auto" TextWrapping="Wrap" AcceptsReturn="False" Header="Teléfono"></TextBox>
+                <TextBox Text="- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna wirl aliqua. Up exlaborum incididunt." Margin="10,20,50,0" Width="auto" Height="250" TextWrapping="Wrap" AcceptsReturn="True" Header="Comentarios" IsSpellCheckEnabled="True"></TextBox>
+                <RelativePanel Margin="0,50,0,0" HorizontalAlignment="Center">
+                    <AppBarButton Name="apbDelete" Icon="Cancel" ToolTipService.ToolTip="Cancelar Cambios"></AppBarButton>
+                    <AppBarButton Icon="Save" RelativePanel.RightOf="apbDelete" Margin="30,0,0,0" ToolTipService.ToolTip="Guardar Cambios"></AppBarButton>
+                </RelativePanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
