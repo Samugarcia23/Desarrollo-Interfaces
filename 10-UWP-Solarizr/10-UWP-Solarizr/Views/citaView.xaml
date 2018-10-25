@@ -21,7 +21,7 @@
         <Grid Grid.Row="0" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -72,16 +72,16 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <StackPanel>
-                <TextBlock Text="Datos del cliente: " FontSize="18" Margin="10,50,0,10" ></TextBlock>
-                <TextBox Text="Armando Podadera" Margin="10,0,50,0" Width="auto" TextWrapping="Wrap" AcceptsReturn="False" Header="Nombre"></TextBox>
-                <TextBox Text="666666666" Margin="10,20,50,0" Width="auto" TextWrapping="Wrap" AcceptsReturn="False" Header="Teléfono"></TextBox>
-                <TextBox Text="- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna wirl aliqua. Up exlaborum incididunt." Margin="10,20,50,0" Width="auto" Height="250" TextWrapping="Wrap" AcceptsReturn="True" Header="Comentarios" IsSpellCheckEnabled="True"></TextBox>
-                <RelativePanel Margin="0,50,0,0" HorizontalAlignment="Center">
+            <RelativePanel>
+                <TextBlock Name="tbNombre" Text="Datos del cliente: " FontSize="18" Margin="10,50,0,10" ></TextBlock>
+                <TextBox Name="tbNumero" RelativePanel.Below="tbNombre" Text="Armando Podadera" Margin="10,0,50,0" Width="auto" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" TextWrapping="Wrap" AcceptsReturn="False" Header="Nombre"></TextBox>
+                <TextBox Name="tbcomentario" Text="666666666" RelativePanel.Below="tbNumero" Margin="10,20,50,0" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" TextWrapping="Wrap" AcceptsReturn="False" Header="Teléfono"></TextBox>
+                <TextBox Name="tbGrande" RelativePanel.Below="tbcomentario" Text="- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna wirl aliqua. Up exlaborum incididunt." Margin="10,20,50,0" Width="auto" Height="250" TextWrapping="Wrap" AcceptsReturn="True" Header="Comentarios" IsSpellCheckEnabled="True"></TextBox>
+                <Grid Margin="0,10,0,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Center" RelativePanel.AlignBottomWithPanel="True">
                     <AppBarButton Name="apbDelete" Icon="Cancel" ToolTipService.ToolTip="Cancelar Cambios"></AppBarButton>
-                    <AppBarButton Icon="Save" RelativePanel.RightOf="apbDelete" Margin="30,0,0,0" ToolTipService.ToolTip="Guardar Cambios"></AppBarButton>
-                </RelativePanel>
-            </StackPanel>
+                    <AppBarButton Icon="Save" RelativePanel.RightOf="apbDelete" Margin="100,0,0,0" ToolTipService.ToolTip="Guardar Cambios"></AppBarButton>
+                </Grid>
+            </RelativePanel>
         </Grid>
     </Grid>
 </Page>
