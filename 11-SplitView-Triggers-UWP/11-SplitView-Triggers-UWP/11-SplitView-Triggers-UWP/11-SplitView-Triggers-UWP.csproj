@@ -107,6 +107,15 @@
     <None Include="11-SplitView-Triggers-UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\meme1.jpg" />
+    <Content Include="Assets\meme2.png" />
+    <Content Include="Assets\meme3.jpg" />
+    <Content Include="Assets\meme4.jpg" />
+    <Content Include="Assets\meme5.jpg" />
+    <Content Include="Assets\meme6.jpg" />
+    <Content Include="Assets\meme7.png" />
+    <Content Include="Assets\meme8.png" />
+    <Content Include="Assets\meme9.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

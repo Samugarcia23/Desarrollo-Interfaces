@@ -8,7 +8,144 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <RelativePanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="scrScroll.VerticalScrollBarVisibility" Value="Visible" />
+                        <Setter Target="scrScroll.VerticalScrollMode" Value="Enabled"/>
 
-    </Grid>
+                        <Setter Target="grdGrid.(RelativePanel.Below)" Value="stpAppBar"/>
+                        <Setter Target="grdGrid.Rows" Value="9"/>
+                        <Setter Target="grdGrid.Rows.Height" Value="Auto"/>
+                        <Setter Target="grdGrid.Columns" Value="0"/>
+
+                        <Setter Target="img1.(Grid.Row)" Value="0"/>
+                        <Setter Target="img1.Stretch" Value="Fill"/>
+
+                        <Setter Target="img2.(Grid.Row)" Value="1"/>
+                        <Setter Target="img2.Stretch" Value="Fill"/>
+
+                        <Setter Target="img3.(Grid.Row)" Value="2"/>
+                        <Setter Target="img3.Stretch" Value="Fill"/>
+
+                        <Setter Target="img4.(Grid.Row)" Value="3"/>
+                        <Setter Target="img4.Stretch" Value="Fill"/>
+
+                        <Setter Target="img5.(Grid.Row)" Value="4"/>
+                        <Setter Target="img5.Stretch" Value="Fill"/>
+
+                        <Setter Target="img6.(Grid.Row)" Value="5"/>
+                        <Setter Target="img6.Stretch" Value="Fill"/>
+
+                        <Setter Target="img7.(Grid.Row)" Value="6"/>
+                        <Setter Target="img7.Stretch" Value="Fill"/>
+
+                        <Setter Target="img8.(Grid.Row)" Value="7"/>
+                        <Setter Target="img8.Stretch" Value="Fill"/>
+
+                        <Setter Target="img9.(Grid.Row)" Value="8"/>
+                        <Setter Target="img9.Stretch" Value="Fill"/>
+
+                        <Setter Target="stpAppBar.Orientation" Value="Horizontal"/>
+                        <Setter Target="stpAppBar.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="stpAppBar.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="stpAppBar.Background" Value="LightBlue"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="550"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="grdGrid.(RelativePanel.LeftOf)" Value="stpAppBar"/>
+                        <Setter Target="grdGrid.Rows" Value="3"/>
+                        <Setter Target="grdGrid.Rows.Height" Value="Auto"/>
+                        <Setter Target="grdGrid.Columns" Value="3"/>
+
+                        <Setter Target="img1.(Grid.Row)" Value="0"/>
+                        <Setter Target="img1.(Grid.Column)" Value="0"/>
+                        <Setter Target="img1.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img2.(Grid.Row)" Value="0"/>
+                        <Setter Target="img2.(Grid.Column)" Value="1"/>
+                        <Setter Target="img2.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img3.(Grid.Row)" Value="0"/>
+                        <Setter Target="img3.(Grid.Column)" Value="2"/>
+                        <Setter Target="img3.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img4.(Grid.Row)" Value="1"/>
+                        <Setter Target="img4.(Grid.Column)" Value="0"/>
+                        <Setter Target="img4.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img5.(Grid.Row)" Value="1"/>
+                        <Setter Target="img5.(Grid.Column)" Value="1"/>
+                        <Setter Target="img5.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img6.(Grid.Row)" Value="1"/>
+                        <Setter Target="img6.(Grid.Column)" Value="2"/>
+                        <Setter Target="img6.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img7.(Grid.Row)" Value="2"/>
+                        <Setter Target="img7.(Grid.Column)" Value="0"/>
+                        <Setter Target="img7.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img8.(Grid.Row)" Value="2"/>
+                        <Setter Target="img8.(Grid.Column)" Value="1"/>
+                        <Setter Target="img8.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="img9.(Grid.Row)" Value="2"/>
+                        <Setter Target="img9.(Grid.Column)" Value="2"/>
+                        <Setter Target="img9.Stretch" Value="Fill"/>
+                        
+                        <Setter Target="stpAppBar.Orientation" Value="Vertical"/>
+                        <Setter Target="stpAppBar.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                        <Setter Target="stpAppBar.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="stpAppBar.(RelativePanel.AlignTopWithPanel)" Value="True"/>
+                        <Setter Target="stpAppBar.Background" Value="LightBlue"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid>
+            <ScrollViewer Name="scrScroll" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
+                <Grid Name="grdGrid">
+                    <!--<Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>-->
+                    <Image Name="img1" Source="../Assets/meme2.png"></Image>
+                    <Image Name="img2" Source="../Assets/meme3.jpg"></Image>
+                    <Image Name="img3" Source="../Assets/meme4.jpg"></Image>
+                    <Image Name="img4" Source="../Assets/meme5.jpg"></Image>
+                    <Image Name="img5" Source="../Assets/meme6.jpg"></Image>
+                    <Image Name="img6" Source="../Assets/meme7.png"></Image>
+                    <Image Name="img7" Source="../Assets/meme8.png"></Image>
+                    <Image Name="img8" Source="../Assets/meme9.png"></Image>
+                    <Image Name="img9" Source="../Assets/meme1.jpg"></Image>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel Name="stpAppBar">
+            <AppBarButton Icon="Add" Label="Añadir"/>
+            <AppBarButton Icon="Go" Label="Ir"/>
+            <AppBarButton Icon="Play" Label="Play"/>
+            <AppBarButton Icon="AddFriend" Label="Añadir"/>
+        </StackPanel>
+    </RelativePanel>
 </Page>
