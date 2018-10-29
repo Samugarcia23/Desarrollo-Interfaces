@@ -8,7 +8,43 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <RelativePanel>
+        <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="30" Click="HamburgerButton_Click" Background="WhiteSmoke" />
+        <SplitView Name="splView" RelativePanel.Below="HamburgerButton" DisplayMode="CompactInline" CompactPaneLength="50" OpenPaneLength="250" RelativePanel.AlignBottomWithPanel="True" HorizontalContentAlignment="Center" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBoxItem Name="btnPagina1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="30" Text="&#xF61B;" />
+                            <TextBlock Text="Pagina 1" FontSize="22" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
 
-    </Grid>
+                    <ListBoxItem Name="btnPagina2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="30" Text="&#xF61B;" />
+                            <TextBlock Text="Pagina 2" FontSize="22" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="btnPagina3">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="30" Text="&#xF61B;" />
+                            <TextBlock Text="Pagina 3" FontSize="22" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="btnPagina4">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="30" Text="&#xF61B;" />
+                            <TextBlock Text="Pagina 4" FontSize="22" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="contenedor" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </SplitView.Content>
+        </SplitView>
+    </RelativePanel>
 </Page>
