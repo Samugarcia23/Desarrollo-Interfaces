@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="_14_Ejercicio2Binding_UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_14_Ejercicio2Binding_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_14_Ejercicio2Binding_UWP.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+
+    <RelativePanel>
+        <ScrollViewer x:Name="scrScroll" VerticalScrollBarVisibility="Visible" Margin="10" VerticalScrollMode="Enabled" RelativePanel.AlignTopWithPanel="True" Height="auto">
+            <!-- Ponemos twoway para que la propiedad del viewmodel "PersonaSeleccionada" vaya Cambiando  PLACEHOLDER-->
+            <Grid>
+                <ListView  ItemsSource="{Binding ListadoDePersonas}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
+                                <TextBlock Text="{Binding Path=nombre}"/>
+                                <TextBlock Text="{Binding Path=apellidos}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+        <Grid RelativePanel.RightOf="scrScroll">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBox Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
+                <TextBox Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
+                <TextBox Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10">
+                <TextBox Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10">
+                <TextBox Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion}"></TextBox>
+            </StackPanel>
+        </Grid>
+    </RelativePanel>
+</Page>
