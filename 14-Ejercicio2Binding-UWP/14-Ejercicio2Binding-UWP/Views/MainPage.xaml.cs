@@ -26,5 +26,36 @@ namespace _14_Ejercicio2Binding_UWP
         {
             this.InitializeComponent();
         }
-    }
+		/// <summary>
+		/// Metodo que actualiza los campos de la persona seleccionada al ser pulsado el boton "Guardar"
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		#region Button click
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			txtNombre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+			txtApellidos.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+			txtFechNac.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+			txtTelefono.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+			txtDireccion.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+			DialogDatosActualizados();
+		}
+		#endregion
+
+		#region Dialog
+		private async void DialogDatosActualizados()
+		{
+			ContentDialog dialog = new ContentDialog
+			{
+				Title = "Correcto",
+				Content = "Se han actualizado los datos correctanmente!",
+				CloseButtonText = "Ok"
+			};
+
+			ContentDialogResult result = await dialog.ShowAsync();
+		}
+
+		#endregion
+	}
 }

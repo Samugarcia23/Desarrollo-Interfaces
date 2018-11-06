@@ -2,13 +2,14 @@
 using _14_Ejercicio2Binding_UWP.Models.Manejadora;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _14_Ejercicio2Binding_UWP.ViewModels
 {
-	public class MainPageViewModel
+	public class MainPageViewModel : INotifyPropertyChanged
 	{
 		#region Propiedades Privadas
 		private List<clsPersona> _ListadoDePersonas;
@@ -17,6 +18,8 @@ namespace _14_Ejercicio2Binding_UWP.ViewModels
 		#endregion
 
 		#region Propiedades Publicas
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public List<clsPersona> ListadoDePersonas
 		{
@@ -27,13 +30,13 @@ namespace _14_Ejercicio2Binding_UWP.ViewModels
 		public clsPersona PersonaSeleccionada
 		{
 			get { return _PersonaSeleccionada; }
-			set { _PersonaSeleccionada = value; }
+			set { _PersonaSeleccionada = value; NotifyPropertyChanged("PersonaSeleccionada"); }
 		}
 
 		public List<clsDepartamento> ListadoDepartamentos
 		{
 			get { return _ListadoDepartamentos; }
-			set { _ListadoDepartamentos = value; }
+			set { _ListadoDepartamentos = value;}	
 		}
 
 		#endregion
@@ -47,6 +50,16 @@ namespace _14_Ejercicio2Binding_UWP.ViewModels
 
 		#endregion
 
+		/// <summary>
+		/// Metodo que crea un nuevo PropertyChangedEventArgs para realizar el cambio en los datos del formulario
+		/// </summary>
+		/// <param name="nombre"></param>
+		#region Otros
+		protected void NotifyPropertyChanged(string nombre)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
+		}
+		#endregion
 
 	}
 }

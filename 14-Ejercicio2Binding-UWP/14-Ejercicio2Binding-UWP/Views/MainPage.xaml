@@ -13,7 +13,8 @@
         <vm:MainPageViewModel/>
     </Page.DataContext>
 
-    <RelativePanel>
+    <RelativePanel HorizontalAlignment="Center">
+        <!-- Lista contenida en un ScrollViewer que muestra las diferentes personas que tenemos guardadas -->
         <ScrollViewer x:Name="scrScroll" VerticalScrollBarVisibility="Visible" Margin="10" VerticalScrollMode="Enabled" RelativePanel.AlignTopWithPanel="True" Height="auto">
             <!-- Ponemos twoway para que la propiedad del viewmodel "PersonaSeleccionada" vaya Cambiando  PLACEHOLDER-->
             <Grid>
@@ -21,16 +22,19 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
-                                <TextBlock Text="{Binding Path=nombre}"/>
-                                <TextBlock Text="{Binding Path=apellidos}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                <TextBlock Text="{Binding Path=nombre, Mode=TwoWay}"/>
+                                <TextBlock Text="{Binding Path=apellidos, Mode=TwoWay}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
         </ScrollViewer>
-        <Grid RelativePanel.RightOf="scrScroll">
+
+        <!-- Grid que contiene un formulario para actualizar los datos de la persona -->
+        <Grid RelativePanel.RightOf="scrScroll" Name="grLista">
             <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -38,19 +42,22 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Margin="10">
-                <TextBox Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre}"></TextBox>
+                <TextBox Name="txtNombre"  Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
-                <TextBox Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos}"></TextBox>
+                <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
-                <TextBox Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento}"></TextBox>
+                <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10">
-                <TextBox Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono}"></TextBox>
+                <TextBox Name="txtTelefono" Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
             </StackPanel>
             <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10">
-                <TextBox Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion}"></TextBox>
+                <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0,15,0,0" HorizontalAlignment="Center" >
+                <Button Content="Guardar" Click="Button_Click" ></Button>           
             </StackPanel>
         </Grid>
     </RelativePanel>
