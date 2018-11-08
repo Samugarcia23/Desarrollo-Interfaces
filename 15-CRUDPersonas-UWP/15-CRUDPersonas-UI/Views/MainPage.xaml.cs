@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _15_CRUDPersonas_UI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +18,47 @@ using Windows.UI.Xaml.Navigation;
 
 namespace _15_CRUDPersonas_UI
 {
-    /// <summary>
-    /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
-            this.InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
+	/// </summary>
+	public sealed partial class MainPage : Page
+	{
+		public MainPage()
+		{
+			this.InitializeComponent();
+		}
+
+		MainPageViewModel vm = new MainPageViewModel();
+
+		private void addPersona_Click(object sender, RoutedEventArgs e)
+		{
+			if (listaPersonas.SelectedItem != null)
+			{
+				listaPersonas.SelectedItem = null;
+				txtNombre.Focus(FocusState.Programmatic);
+			}
+			else
+			{
+				limpiarTextBox();
+				txtNombre.Focus(FocusState.Programmatic);
+			}
+		}
+
+		/// <summary>
+		/// Metodo para limpiar los textos del formulario
+		/// </summary>
+		public void limpiarTextBox()
+		{
+			txtApellidos.Text = "";
+			txtDireccion.Text = "";
+			txtNombre.Text = "";
+			txtTelefono.Text = "";
+			txtFechNac.Text = "";
+		}
+
+		private void listaPersonas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			vm.hayPersona();
+		}
+	}
 }

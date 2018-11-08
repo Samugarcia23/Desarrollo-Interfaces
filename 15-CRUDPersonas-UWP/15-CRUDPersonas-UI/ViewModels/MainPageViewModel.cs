@@ -1,4 +1,6 @@
-﻿using _15_CRUDPersonas_Entidades;
+﻿using _15_CRUDPersonas_BL.Listados;
+using _15_CRUDPersonas_BL.Manejadoras;
+using _15_CRUDPersonas_Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,14 +13,18 @@ namespace _15_CRUDPersonas_UI.ViewModels
 	public class MainPageViewModel : INotifyPropertyChanged
 	{
 		#region Propiedades Privadas
-		private List<clsPersona> _ListadoDePersonas;
 		private clsPersona _PersonaSeleccionada;
-		private List<clsDepartamento> _ListadoDepartamentos;
+		private List<clsPersona> _ListadoDePersonas;
+		private List<clsDepartamento> _ListadoDeDepartamentos;
+		private clsDepartamento _DepartamentoSeleccionado;
 		#endregion
 
 		#region Propiedades Publicas
 
 		public event PropertyChangedEventHandler PropertyChanged;
+		clsListadoPersonas_BL listadoPersonas_BL = new clsListadoPersonas_BL();
+		clsListadoDepartamentos_BL listadoDepartamentos_BL = new clsListadoDepartamentos_BL();
+		clsManeJadoraPersona_BL manejadora_BL = new clsManeJadoraPersona_BL();
 
 		public List<clsPersona> ListadoDePersonas
 		{
@@ -26,16 +32,23 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			set { _ListadoDePersonas = value; }
 		}
 
+		public List<clsDepartamento> ListadoDeDepartamentos
+		{
+			get { return _ListadoDeDepartamentos; }
+			set { _ListadoDeDepartamentos = value; }
+		}
+
 		public clsPersona PersonaSeleccionada
 		{
 			get { return _PersonaSeleccionada; }
-			set { _PersonaSeleccionada = value; NotifyPropertyChanged("PersonaSeleccionada"); }
+			set { _PersonaSeleccionada = value; NotifyPropertyChanged("PersonaSeleccionada"); hayPersona(); }
 		}
 
-		public List<clsDepartamento> ListadoDepartamentos
+		public clsDepartamento DepartamentoSeleccionado
 		{
-			get { return _ListadoDepartamentos; }
-			set { _ListadoDepartamentos = value;}	
+			get { return _DepartamentoSeleccionado; }
+			set { _DepartamentoSeleccionado = value; NotifyPropertyChanged("DepartamentoSeleccionado"); }
+			// _DepartamentoSeleccionado = manejadora_BL.DepartamentoPorIDPersona(PersonaSeleccionada.idPersona)
 		}
 
 		#endregion
@@ -43,8 +56,8 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		#region Constructores
 		public MainPageViewModel()
 		{
-			//Cargar el listado de Personas
-			//_ListadoDePersonas = Listado de la capa bl .listadoPersona();
+			_ListadoDePersonas = listadoPersonas_BL.listado();
+			_ListadoDeDepartamentos = listadoDepartamentos_BL.listado();
 		}
 
 		#endregion
@@ -57,6 +70,13 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		protected void NotifyPropertyChanged(string nombre)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
+		}
+
+		public clsDepartamento hayPersona()
+		{
+			if (PersonaSeleccionada != null)
+				DepartamentoSeleccionado = manejadora_BL.DepartamentoPorIDPersona(PersonaSeleccionada.idPersona);
+			return DepartamentoSeleccionado;
 		}
 		#endregion
 

@@ -14,7 +14,7 @@
     </Page.DataContext>
     
     <RelativePanel>
-        <Grid>
+        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
@@ -22,23 +22,30 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="scrScroll" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" Grid.Column="0" Grid.Row="0">
+                    <Grid>
+                        <ListView Name="listaPersonas" SelectionChanged="listaPersonas_SelectionChanged" ItemsSource="{Binding ListadoDePersonas}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
+                                        <TextBlock Text="{Binding Path=nombre, Mode=TwoWay}"/>
+                                        <TextBlock Text="{Binding Path=apellidos, Mode=TwoWay}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </ScrollViewer>
+                <Button Name="addPersona" Grid.Row="1" Content="Añadir Nuevo Usuario" HorizontalAlignment="Center" Click="addPersona_Click"></Button>
+            </Grid>
 
-            <ScrollViewer x:Name="scrScroll" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" RelativePanel.AlignTopWithPanel="True" Grid.Column="0" Grid.Row="0">
-                <Grid>
-                    <ListView ItemsSource="{Binding ListadoDePersonas}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
-                                    <TextBlock Text="Binding Path=nombre, Mode=TwoWay"/>
-                                    <TextBlock Text="Binding Path=apellidos, Mode=TwoWay" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-            </ScrollViewer>
-
-            <Grid RelativePanel.RightOf="scrScroll" Name="grLista">
+            <Grid RelativePanel.RightOf="scrScroll" Name="grLista" Grid.Row="0" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -49,25 +56,26 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtNombre"  Margin="5,0,0,0" PlaceholderText="Nombre" Text=""></TextBox>
+                    <TextBox Name="txtNombre"  Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text=""></TextBox>
+                    <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text=""></TextBox>
+                    <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10">
                     <TextBox Name="txtTelefono" Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="5" Orientation="Vertical" Margin="15,15,0,0"  HorizontalAlignment="Left" Width="auto">
-                    <ComboBox></ComboBox>
+                <StackPanel Grid.Row="5" Margin="15,15,0,0" Width="auto">
+                    <ComboBox Name="comboBox" ItemsSource="{Binding ListadoDeDepartamentos}" SelectedItem="{Binding Path=DepartamentoSeleccionado.nombreDepartamento, Mode=TwoWay}" DisplayMemberPath="nombreDepartamento" PlaceholderText="Departamento" PlaceholderForeground="{ThemeResource SystemControlPageTextBaseMediumBrush}" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
                 </StackPanel>
-                <StackPanel Grid.Row="6" Orientation="Vertical" Margin="0,15,0,0" HorizontalAlignment="Center" >
-                    <Button Content="Guardar"></Button>
+                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Name="btnGuardarAdd" Content="Guardar" Margin="0,0,5,0"></Button>
+                    <Button Content="Eliminar" Margin="5,0,0,0"></Button>
                 </StackPanel>
             </Grid>
 

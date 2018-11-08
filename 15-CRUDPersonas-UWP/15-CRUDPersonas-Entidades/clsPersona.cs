@@ -18,7 +18,7 @@ namespace _15_CRUDPersonas_Entidades
 			this.idPersona = idPersona;
 			this.nombre = nombre;
 			this.apellidos = apellidos;
-			this.fechNacimiento = fechNacimiento;
+			this.fechNacimiento = fechNacimiento.Date;
 			this.direccion = direccion;
 			this.telefono = telefono;
 			this.idDepartamento = idDepartamento;
