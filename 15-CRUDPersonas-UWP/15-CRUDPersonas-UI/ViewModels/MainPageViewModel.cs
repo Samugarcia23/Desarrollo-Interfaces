@@ -35,19 +35,19 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		public List<clsDepartamento> ListadoDeDepartamentos
 		{
 			get { return _ListadoDeDepartamentos; }
-			set { _ListadoDeDepartamentos = value; }
+			set { _ListadoDeDepartamentos = value; NotifyPropertyChanged("PersonaSeleccionada"); }
 		}
 
 		public clsPersona PersonaSeleccionada
 		{
 			get { return _PersonaSeleccionada; }
-			set { _PersonaSeleccionada = value; NotifyPropertyChanged("PersonaSeleccionada"); hayPersona(); }
+			set { _PersonaSeleccionada = value; NotifyPropertyChanged("PersonaSeleccionada"); }
 		}
 
 		public clsDepartamento DepartamentoSeleccionado
 		{
 			get { return _DepartamentoSeleccionado; }
-			set { _DepartamentoSeleccionado = value; NotifyPropertyChanged("DepartamentoSeleccionado"); }
+			set { _DepartamentoSeleccionado = value;  }
 			// _DepartamentoSeleccionado = manejadora_BL.DepartamentoPorIDPersona(PersonaSeleccionada.idPersona)
 		}
 
@@ -70,13 +70,6 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		protected void NotifyPropertyChanged(string nombre)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
-		}
-
-		public clsDepartamento hayPersona()
-		{
-			if (PersonaSeleccionada != null)
-				DepartamentoSeleccionado = manejadora_BL.DepartamentoPorIDPersona(PersonaSeleccionada.idPersona);
-			return DepartamentoSeleccionado;
 		}
 		#endregion
 

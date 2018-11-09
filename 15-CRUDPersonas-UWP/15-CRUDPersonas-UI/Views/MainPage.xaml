@@ -71,7 +71,7 @@
                     <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="5" Margin="15,15,0,0" Width="auto">
-                    <ComboBox Name="comboBox" ItemsSource="{Binding ListadoDeDepartamentos}" SelectedItem="{Binding Path=DepartamentoSeleccionado.nombreDepartamento, Mode=TwoWay}" DisplayMemberPath="nombreDepartamento" PlaceholderText="Departamento" PlaceholderForeground="{ThemeResource SystemControlPageTextBaseMediumBrush}" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
+                    <ComboBox Name="comboBox" ItemsSource="{Binding ListadoDeDepartamentos}" SelectedValuePath="idDepartamento" SelectedValue="{Binding personaSeleccionada.idDepartamento, Mode=TwoWay}" DisplayMemberPath="nombreDepartamento" PlaceholderText="Departamento" PlaceholderForeground="{ThemeResource SystemControlPageTextBaseMediumBrush}" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Button Name="btnGuardarAdd" Content="Guardar" Margin="0,0,5,0"></Button>

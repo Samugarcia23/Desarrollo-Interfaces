@@ -28,8 +28,6 @@ namespace _15_CRUDPersonas_UI
 			this.InitializeComponent();
 		}
 
-		MainPageViewModel vm = new MainPageViewModel();
-
 		private void addPersona_Click(object sender, RoutedEventArgs e)
 		{
 			if (listaPersonas.SelectedItem != null)
@@ -58,7 +56,6 @@ namespace _15_CRUDPersonas_UI
 
 		private void listaPersonas_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			vm.hayPersona();
 		}
 	}
 }
