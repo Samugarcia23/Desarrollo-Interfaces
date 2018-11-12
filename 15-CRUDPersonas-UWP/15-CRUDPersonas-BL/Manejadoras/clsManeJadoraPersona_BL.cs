@@ -10,15 +10,17 @@ namespace _15_CRUDPersonas_BL.Manejadoras
 {
 	public class clsManeJadoraPersona_BL
 	{
-		public clsDepartamento DepartamentoPorIDPersona(int id)
+		/// <summary>
+		///  Funcion que llama a BorrarPersonaPorID de la capa DAL y devuelve las filas alteradas a la capa UI
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public int BorrarPersonaPorID_BL(int id)
 		{
-			clsDepartamento oDepartamento = new clsDepartamento();
-			clsPersona oPersona = new clsPersona();
 			clsManejadoraPersona_DAL manejadora_DAL = new clsManejadoraPersona_DAL();
-
-			oDepartamento = manejadora_DAL.DepartamentoPorIDPersona(oPersona.idPersona);
-
-			return oDepartamento;
+			int filas;
+			filas = manejadora_DAL.BorrarPersonaPorID(id);
+			return filas;
 		}
 	}
 }

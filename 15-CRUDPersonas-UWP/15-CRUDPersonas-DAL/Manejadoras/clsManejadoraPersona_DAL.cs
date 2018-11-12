@@ -11,43 +11,51 @@ namespace _15_CRUDPersonas_DAL.Manejadoras
 {
 	public class clsManejadoraPersona_DAL
 	{
-		public clsDepartamento DepartamentoPorIDPersona(int id)
+		/// <summary>
+		/// Metodo para borrar una persona pasandole su id
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns>filas</returns>
+		public int BorrarPersonaPorID(int id)
 		{
-			clsMyConnection miConexion = new clsMyConnection();
-			SqlConnection sqlConnection = null;
-			SqlDataReader lector = null;
-			SqlCommand comando = new SqlCommand();
-			clsDepartamento oDepartamento = new clsDepartamento();
 			clsPersona oPersona = new clsPersona();
+			clsMyConnection miconexion = new clsMyConnection();
+			SqlConnection sqlconnection = null;
+			SqlCommand sqlCommand = new SqlCommand();
+			int filas;
 
 			try
 			{
-				sqlConnection = miConexion.getConnection();
+				//Obtener conexion abierta	
+				sqlconnection = miconexion.getConnection();
 
-				comando.CommandText = "SELECT nombreDepartamento FROM Departamentos INNER JOIN Personas ON Departamentos.IDDepartamento = Personas.IDDepartamento WHERE IDPersona = @id;";
+				//Definimos los parametros del comando
+				sqlCommand.CommandText = "DELETE FROM Personas WHERE idPersona=@id";
 
-				comando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = oPersona.idPersona;
-				comando.Connection = sqlConnection;
+				/* 
+				 * Definimos el parametro @id
+				 */
+				SqlParameter param;
+				param = new SqlParameter();
+				param.ParameterName = "@id";
+				param.SqlDbType = System.Data.SqlDbType.Int;
+				param.Value = id;
 
-				lector = comando.ExecuteReader();
+				sqlCommand.Parameters.Add(param);
 
-				if (lector.HasRows)
-				{
-					lector.Read();
-					oPersona.idPersona = (int)lector["idPersona"];
-				}
+				//Definir la conexion
+				sqlCommand.Connection = sqlconnection;
+
+				//Ejecutar la sentencia
+				filas = sqlCommand.ExecuteNonQuery();
 
 			}
 			catch (SqlException e) { throw e; }
 			finally
 			{
-				miConexion.closeConnection(ref sqlConnection);
-				if (lector != null)
-					lector.Close();
+				miconexion.closeConnection(ref sqlconnection);
 			}
-
-			return oDepartamento;
-
+			return filas;
 		}
 	}
 }

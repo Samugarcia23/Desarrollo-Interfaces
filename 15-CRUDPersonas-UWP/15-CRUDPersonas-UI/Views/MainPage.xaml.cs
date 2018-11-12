@@ -57,5 +57,6 @@ namespace _15_CRUDPersonas_UI
 		private void listaPersonas_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 		}
+
 	}
 }
