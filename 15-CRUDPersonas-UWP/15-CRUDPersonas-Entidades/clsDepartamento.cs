@@ -13,15 +13,15 @@ namespace _15_CRUDPersonas_Entidades
 		}
 		#endregion
 		#region Constructor por parametros
-		public clsDepartamento(int idDepartamento, String nombreDepartamento)
+		public clsDepartamento(int id, String nom)
 		{
-			this.idDepartamento = idDepartamento;
-			this.nombreDepartamento = nombreDepartamento;
+			this.idDepartamento = id;
+			this.nombreDepartamento = nom;
 		}
 		#endregion
 		#region atributos_Departamento
-		public int idDepartamento { get; set; }
-		public String nombreDepartamento { get; set; }
+		public int idDepartamento { set; get; }
+		public String nombreDepartamento { set; get; }
 		#endregion
 	}
 }

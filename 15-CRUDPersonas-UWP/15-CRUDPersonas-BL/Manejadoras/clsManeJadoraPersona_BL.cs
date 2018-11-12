@@ -22,5 +22,22 @@ namespace _15_CRUDPersonas_BL.Manejadoras
 			filas = manejadora_DAL.BorrarPersonaPorID(id);
 			return filas;
 		}
+
+		public int InsertarPersona_BL(clsPersona oPersona)
+		{
+			int filas;
+			clsManejadoraPersona_DAL manejadora_DAL = new clsManejadoraPersona_DAL();
+			filas  = manejadora_DAL.InsertarPersona_DAL(oPersona);
+
+			return filas;
+		}
+
+		public int EditarPersona_BL(clsPersona oPersona)
+		{
+			clsManejadoraPersona_DAL manejadora_DAL = new clsManejadoraPersona_DAL();
+			int filas;
+			filas = manejadora_DAL.EditarPersona_DAL(oPersona);
+			return filas;
+		}
 	}
 }

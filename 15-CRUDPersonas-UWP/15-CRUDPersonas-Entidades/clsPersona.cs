@@ -13,15 +13,15 @@ namespace _15_CRUDPersonas_Entidades
 		}
 		#endregion
 		#region Constructor por parametros
-		public clsPersona(int idPersona, String nombre, String apellidos, DateTime fechNacimiento, String direccion, String telefono, int idDepartamento)
+		public clsPersona(int idPer, String nom, String ape, DateTime fechNac, String direc, String tel, int idDep)
 		{
-			this.idPersona = idPersona;
-			this.nombre = nombre;
-			this.apellidos = apellidos;
-			this.fechNacimiento = fechNacimiento.Date;
-			this.direccion = direccion;
-			this.telefono = telefono;
-			this.idDepartamento = idDepartamento;
+			this.idPersona = idPer;
+			this.nombre = nom;
+			this.apellidos = ape;
+			this.fechNacimiento = fechNac;
+			this.direccion = direc;
+			this.telefono = tel;
+			this.idDepartamento = idDep;
 		}
 		#endregion
 		#region atributos_Persona

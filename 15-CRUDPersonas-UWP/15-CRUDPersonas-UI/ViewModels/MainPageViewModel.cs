@@ -20,6 +20,9 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		private clsDepartamento _DepartamentoSeleccionado;
 		private DelegateCommand _eliminarCommand;
 		private DelegateCommand _actualizarListaCommand;
+		private DelegateCommand _insertarCommand;
+		private DelegateCommand _prepararInsertCommand;
+		private DelegateCommand _editarCommand;
 		#endregion
 
 		#region Propiedades Publicas
@@ -60,30 +63,6 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			set { _DepartamentoSeleccionado = value; NotifyPropertyChanged("DepartamentoSeleccionado"); }
 		}
 
-		/// <summary>
-		/// Comando Para eliminar
-		/// </summary>
-		public DelegateCommand eliminarCommand
-		{
-			get
-			{
-				_eliminarCommand = new DelegateCommand(EliminarCommand_Executed, EliminarCommand_CanExecute);
-				return _eliminarCommand;
-			}
-		}
-
-		/// <summary>
-		/// Comando para actualizar
-		/// </summary>
-		public DelegateCommand actualizarListaCommand
-		{
-			get
-			{
-				_actualizarListaCommand = new DelegateCommand(ActualizarListaCommand_Executed);
-				return _actualizarListaCommand;
-			}
-		}
-
 		#endregion
 
 		#region Constructores
@@ -96,15 +75,23 @@ namespace _15_CRUDPersonas_UI.ViewModels
 
 		#endregion
 
-		/// <summary>
-		/// Metodo que crea un nuevo PropertyChangedEventArgs para realizar el cambio en los datos del formulario
-		/// </summary>
-		/// <param name="nombre"></param>
-		#region Otros
+		#region Eliminar
 		//protected void NotifyPropertyChanged(string nombre)
 		//{
 		//	PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
 		//}
+
+		/// <summary>
+		/// Comando Para eliminar
+		/// </summary>
+		public DelegateCommand eliminarCommand
+		{
+			get
+			{
+				_eliminarCommand = new DelegateCommand(EliminarCommand_Executed, EliminarCommand_CanExecute);
+				return _eliminarCommand;
+			}
+		}
 
 		public async void EliminarCommand_Executed()
 		{
@@ -137,9 +124,9 @@ namespace _15_CRUDPersonas_UI.ViewModels
 				}
 			}
 			
-			#endregion
+			
 		}
-
+		
 		/// <summary>
 		/// Devuelve un booleano parra habilitar/deshabilitar los controles enlazados al comando eliminar
 		/// </summary>
@@ -152,6 +139,22 @@ namespace _15_CRUDPersonas_UI.ViewModels
 				sePuedeEliminar = true;
 			}
 			return sePuedeEliminar;
+		}
+
+		#endregion
+
+		#region Actualizar
+
+		/// <summary>
+		/// Comando para actualizar
+		/// </summary>
+		public DelegateCommand actualizarListaCommand
+		{
+			get
+			{
+				_actualizarListaCommand = new DelegateCommand(ActualizarListaCommand_Executed);
+				return _actualizarListaCommand;
+			}
 		}
 
 		/// <summary>
@@ -169,5 +172,95 @@ namespace _15_CRUDPersonas_UI.ViewModels
 				//TODO Dialog con Error
 			}
 		}
+		#endregion
+
+		#region Insertar
+		public DelegateCommand insertCommand
+		{
+			get
+			{
+				_insertarCommand = new DelegateCommand(InsertarCommand_Executed);
+				return _insertarCommand;
+			}
+		}
+
+		public DelegateCommand prepararInsertCommand
+		{
+			get
+			{
+				_prepararInsertCommand = new DelegateCommand(PrepararInsertCommand_Execute);
+				return _prepararInsertCommand;
+			}
+		}
+
+		public void PrepararInsertCommand_Execute()
+		{
+			ActualizarListaCommand_Executed();
+		}
+		public async void InsertarCommand_Executed()
+		{
+			clsPersona oPersona = new clsPersona();
+			ContentDialog dialog;
+			ContentDialogResult result;
+			int filas;
+
+			try
+			{
+				if (oPersona.idPersona == 0)
+				{
+					filas = manejadora_BL.InsertarPersona_BL(oPersona);
+					dialog = new ContentDialog
+					{
+						Title = "Correcto",
+						Content = $"Se ha insertado {filas} fila Correctamente!",
+						CloseButtonText = "Ok"
+					};
+					result = await dialog.ShowAsync();
+					_ListadoDePersonas = listadoPersonas_BL.listado();
+					NotifyPropertyChanged("ListadoDePersonas");
+				}
+			}
+			catch (Exception e) { }
+		}
+
+		#endregion
+
+		#region Modificar
+
+		public DelegateCommand editarCommand
+		{
+			get
+			{
+				_editarCommand = new DelegateCommand(EditarCommand_Execute);
+				return _editarCommand;
+			}
+		}
+		public async void EditarCommand_Execute()
+		{
+			ContentDialog dialog;
+			ContentDialogResult result;
+
+			try
+			{
+				int filas;
+				filas = manejadora_BL.EditarPersona_BL(PersonaSeleccionada);
+				dialog = new ContentDialog
+				{
+					Title = "Correcto",
+					Content = $"Se ha actualizado {filas} fila Correctamente!",
+					CloseButtonText = "Ok"
+				};
+				result = await dialog.ShowAsync();
+				_ListadoDePersonas = listadoPersonas_BL.listado();
+				NotifyPropertyChanged("ListadoDePersonas");
+			}
+			catch (Exception e)
+			{
+
+			}
+		}
+
+		#endregion
+
 	}
 }
