@@ -23,7 +23,7 @@ namespace _15_CRUDPersonas_DAL.Listados
 			try
 			{
 				sqlConnection = miConexion.getConnection();
-				comando.CommandText = "SELECT nombreDepartamento FROM Departamentos";
+				comando.CommandText = "SELECT nombreDepartamento, idDepartamento FROM Departamentos";
 				comando.Connection = sqlConnection;
 				lector = comando.ExecuteReader();
 
@@ -33,6 +33,7 @@ namespace _15_CRUDPersonas_DAL.Listados
 					{
 						oDepartamento = new clsDepartamento();
 						oDepartamento.nombreDepartamento = (string)lector["nombreDepartamento"];
+						oDepartamento.idDepartamento = (int)lector["idDepartamento"];
 						lista.Add(oDepartamento);
 					}
 				}

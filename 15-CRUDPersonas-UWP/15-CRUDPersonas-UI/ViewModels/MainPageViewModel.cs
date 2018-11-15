@@ -53,6 +53,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 
 				//Llamamos a canExxecute de eliminar para que comprube si habilita el comando
 				_eliminarCommand.RaiseCanExecuteChanged();
+				_insertarCommand.RaiseCanExecuteChanged();
 				NotifyPropertyChanged("PersonaSeleccionada");
 			}
 		}
@@ -105,7 +106,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			confirmarBorrado.SecondaryButtonText = "Confirmar";
 
 			resultado = await confirmarBorrado.ShowAsync();
-			if(resultado == ContentDialogResult.Secondary)
+			if (resultado == ContentDialogResult.Secondary)
 			{
 				try //Vamos a llamar a la capa BL
 				{
@@ -123,10 +124,10 @@ namespace _15_CRUDPersonas_UI.ViewModels
 
 				}
 			}
-			
-			
+
+
 		}
-		
+
 		/// <summary>
 		/// Devuelve un booleano parra habilitar/deshabilitar los controles enlazados al comando eliminar
 		/// </summary>
@@ -134,7 +135,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		private bool EliminarCommand_CanExecute()
 		{
 			bool sePuedeEliminar = false;
-			if(_PersonaSeleccionada != null)
+			if (_PersonaSeleccionada != null)
 			{
 				sePuedeEliminar = true;
 			}
@@ -179,7 +180,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		{
 			get
 			{
-				_insertarCommand = new DelegateCommand(InsertarCommand_Executed);
+				_insertarCommand = new DelegateCommand(InsertarCommand_Executed, InsertarCommand_CanExecute);
 				return _insertarCommand;
 			}
 		}
@@ -193,6 +194,19 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			}
 		}
 
+		private bool InsertarCommand_CanExecute()
+		{
+			bool sePuedeAdd = false;
+			if (_PersonaSeleccionada == null)
+			{
+				sePuedeAdd = true;
+			}
+			return sePuedeAdd;
+		}
+
+		/// <summary>
+		/// Funcion que actualiza la lista para deseleccionar y da el foco al textbox nombre
+		/// </summary>
 		public void PrepararInsertCommand_Execute()
 		{
 			ActualizarListaCommand_Executed();
@@ -206,19 +220,16 @@ namespace _15_CRUDPersonas_UI.ViewModels
 
 			try
 			{
-				if (oPersona.idPersona == 0)
+				filas = manejadora_BL.InsertarPersona_BL(oPersona);
+				dialog = new ContentDialog
 				{
-					filas = manejadora_BL.InsertarPersona_BL(oPersona);
-					dialog = new ContentDialog
-					{
-						Title = "Correcto",
-						Content = $"Se ha insertado {filas} fila Correctamente!",
-						CloseButtonText = "Ok"
-					};
-					result = await dialog.ShowAsync();
-					_ListadoDePersonas = listadoPersonas_BL.listado();
-					NotifyPropertyChanged("ListadoDePersonas");
-				}
+					Title = "Correcto",
+					Content = $"Se ha insertado {filas} fila Correctamente!",
+					CloseButtonText = "Ok"
+				};
+				result = await dialog.ShowAsync();
+				_ListadoDePersonas = listadoPersonas_BL.listado();
+				NotifyPropertyChanged("ListadoDePersonas");
 			}
 			catch (Exception e) { }
 		}

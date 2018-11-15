@@ -49,7 +49,7 @@
                 
             </Grid>
 
-            <Grid RelativePanel.RightOf="scrScroll" Name="grLista" Grid.Row="0" Grid.Column="1">
+            <Grid RelativePanel.RightOf="scrScroll"  Name="grLista" Grid.Row="0" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -60,22 +60,29 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtNombre"  Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
+                    <TextBox Name="txtNombre"  Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
+                    <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
+                    <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtTelefono" Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
+                    <TextBox Name="txtTelefono" Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10">
-                    <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
+                    <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="5" Margin="15,15,0,0" Width="auto">
-                    <ComboBox Name="comboBox" ItemsSource="{Binding ListadoDeDepartamentos}" DisplayMemberPath="nombreDepartamento" SelectedValuePath="idDepartamento" SelectedValue="{Binding PersonaSeleccionada.idDepartamento, Mode=TwoWay}" PlaceholderText="Departamento" PlaceholderForeground="{ThemeResource SystemControlPageTextBaseMediumBrush}" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
+                    <ComboBox Name="comboBox" ItemsSource="{Binding ListadoDeDepartamentos}" 
+                              DisplayMemberPath="nombreDepartamento" 
+                              SelectedValuePath="idDepartamento" 
+                              SelectedValue="{Binding PersonaSeleccionada.idDepartamento, Mode=TwoWay}" 
+                              PlaceholderText="Departamento" 
+                              PlaceholderForeground="{ThemeResource SystemControlPageTextBaseMediumBrush}" 
+                              HorizontalAlignment="Left" VerticalAlignment="Top">
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Button Name="btnAdd" Command="{Binding Path=insertCommand}" Margin="0,0,5,0" Content="Añadir"></Button>
