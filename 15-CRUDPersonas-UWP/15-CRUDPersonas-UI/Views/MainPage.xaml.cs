@@ -30,29 +30,8 @@ namespace _15_CRUDPersonas_UI
 
 		private void addPersona_Click(object sender, RoutedEventArgs e)
 		{
-			//if (listaPersonas.SelectedItem != null)
-			//{
-			//	listaPersonas.SelectedItem = null;
-			//	txtNombre.Focus(FocusState.Programmatic);
-			//}
-			//else
-			//{
-			//	limpiarTextBox();
-			//	txtNombre.Focus(FocusState.Programmatic);
-			//}
+			txtNombre.Focus(FocusState.Programmatic);
 		}
-
-		/// <summary>
-		/// Metodo para limpiar los textos del formulario
-		/// </summary>
-		//public void limpiarTextBox()
-		//{
-		//	txtApellidos.Text = "";
-		//	txtDireccion.Text = "";
-		//	txtNombre.Text = "";
-		//	txtTelefono.Text = "";
-		//	txtFechNac.Text = "";
-		//}
 
 		private void listaPersonas_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{

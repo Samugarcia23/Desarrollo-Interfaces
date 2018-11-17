@@ -51,9 +51,10 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			{
 				_PersonaSeleccionada = value;
 
-				//Llamamos a canExxecute de eliminar para que comprube si habilita el comando
+				//Llamamos a canExecute para que comprube si habilita el comando
 				_eliminarCommand.RaiseCanExecuteChanged();
 				_insertarCommand.RaiseCanExecuteChanged();
+				_editarCommand.RaiseCanExecuteChanged();
 				NotifyPropertyChanged("PersonaSeleccionada");
 			}
 		}
@@ -124,8 +125,6 @@ namespace _15_CRUDPersonas_UI.ViewModels
 
 				}
 			}
-
-
 		}
 
 		/// <summary>
@@ -189,7 +188,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		{
 			get
 			{
-				_prepararInsertCommand = new DelegateCommand(PrepararInsertCommand_Execute);
+				_prepararInsertCommand = new DelegateCommand(PrepararInsertCommand_Executed);
 				return _prepararInsertCommand;
 			}
 		}
@@ -205,22 +204,23 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		}
 
 		/// <summary>
-		/// Funcion que actualiza la lista para deseleccionar y da el foco al textbox nombre
+		/// Funcion que deselecciona una persona
 		/// </summary>
-		public void PrepararInsertCommand_Execute()
+		public void PrepararInsertCommand_Executed()
 		{
-			ActualizarListaCommand_Executed();
+			PersonaSeleccionada = null;
 		}
 		public async void InsertarCommand_Executed()
 		{
 			clsPersona oPersona = new clsPersona();
-			ContentDialog dialog;
+			PersonaSeleccionada = oPersona;
+			ContentDialog dialog; 
 			ContentDialogResult result;
 			int filas;
 
 			try
 			{
-				filas = manejadora_BL.InsertarPersona_BL(oPersona);
+				filas = manejadora_BL.InsertarPersona_BL(PersonaSeleccionada);
 				dialog = new ContentDialog
 				{
 					Title = "Correcto",
@@ -231,7 +231,16 @@ namespace _15_CRUDPersonas_UI.ViewModels
 				_ListadoDePersonas = listadoPersonas_BL.listado();
 				NotifyPropertyChanged("ListadoDePersonas");
 			}
-			catch (Exception e) { }
+			catch (Exception e)
+			{
+				dialog = new ContentDialog
+				{
+					Title = "Error",
+					Content = "No se ha podido insertar la persona",
+					CloseButtonText = "Ok"
+				};
+				result = await dialog.ShowAsync();
+			}
 		}
 
 		#endregion
@@ -242,10 +251,21 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		{
 			get
 			{
-				_editarCommand = new DelegateCommand(EditarCommand_Execute);
+				_editarCommand = new DelegateCommand(EditarCommand_Execute, EditarCommand_CanExecute);
 				return _editarCommand;
 			}
 		}
+
+		public bool EditarCommand_CanExecute()
+		{
+			bool sePuedeMod = false;
+			if (_PersonaSeleccionada != null)
+			{
+				sePuedeMod = true;
+			}
+			return sePuedeMod;
+		}
+
 		public async void EditarCommand_Execute()
 		{
 			ContentDialog dialog;
