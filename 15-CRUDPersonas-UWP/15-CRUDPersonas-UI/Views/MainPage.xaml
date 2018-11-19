@@ -43,8 +43,14 @@
                     </Grid>
                 </ScrollViewer>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Button Name="addPersona"  Command="{Binding Path=prepararInsertCommand}" Content="Añadir Nuevo Usuario"  Click="addPersona_Click" Margin="0,0,10,0"></Button>
-                    <Button Name="btnActualizarLista" Grid.Row="1" Content="Actualizar Lista" Command="{Binding Path=actualizarListaCommand}"></Button>
+                    <Button Name="addPersona" Background="AntiqueWhite" Command="{Binding Path=prepararInsertCommand}" Content="Añadir Nuevo"  Click="addPersona_Click" Margin="0,0,10,0"></Button>
+                    <Button Name="btnActualizarLista" Grid.Row="1" Background="AntiqueWhite" Content="Actualizar" Command="{Binding Path=actualizarListaCommand}"></Button>
+                    <!--cambiar-->
+                    <SearchBox x:Name="mySearchBox" 
+                        FocusOnKeyboardInput="True"
+                        Margin="10,0,0,0"
+                        Width="auto" ChooseSuggestionOnEnter="False"
+                        SearchHistoryEnabled="True" PlaceholderText="Buscar"/>
                 </StackPanel>
                 
             </Grid>
@@ -85,9 +91,9 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <Button Name="btnAdd" Command="{Binding Path=insertCommand}" Margin="0,0,5,0" Content="Añadir"></Button>
-                    <Button Name="btnModificar" Content="Modificar"  Command="{Binding Path=editarCommand}"></Button>
-                    <Button Name="btnEliminar" Command="{Binding Path=eliminarCommand}" Content="Eliminar" Margin="5,0,0,0"></Button>
+                    <Button Name="btnAdd" Background="AntiqueWhite" Command="{Binding Path=insertCommand}" Margin="0,0,5,0" Content="Añadir"></Button>
+                    <Button Name="btnModificar" Background="AntiqueWhite" Content="Modificar"  Command="{Binding Path=editarCommand}"></Button>
+                    <Button Name="btnEliminar" Background="AntiqueWhite" Command="{Binding Path=eliminarCommand}" Content="Eliminar" Margin="5,0,0,0"></Button>
                 </StackPanel>
             </Grid>
 

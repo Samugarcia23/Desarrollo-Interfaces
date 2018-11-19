@@ -134,7 +134,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		private bool EliminarCommand_CanExecute()
 		{
 			bool sePuedeEliminar = false;
-			if (_PersonaSeleccionada != null)
+			if (_PersonaSeleccionada != null && InsertarCommand_CanExecute() == false)
 			{
 				sePuedeEliminar = true;
 			}
@@ -164,7 +164,9 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		{
 			try
 			{
+				_PersonaSeleccionada = null;
 				_ListadoDePersonas = listadoPersonas_BL.listado();
+				NotifyPropertyChanged("PersonaSeleccionada");
 				NotifyPropertyChanged("ListadoDePersonas");
 			}
 			catch (Exception e)
@@ -196,24 +198,23 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		private bool InsertarCommand_CanExecute()
 		{
 			bool sePuedeAdd = false;
-			if (_PersonaSeleccionada == null)
+			if (_PersonaSeleccionada == null || PersonaSeleccionada.idPersona == 0) 
 			{
 				sePuedeAdd = true;
 			}
 			return sePuedeAdd;
 		}
-
+		//Cuando la vista no devuelva una propiedad al viewmodel, no hace falta que se ponga el set
 		/// <summary>
 		/// Funcion que deselecciona una persona
 		/// </summary>
 		public void PrepararInsertCommand_Executed()
 		{
 			PersonaSeleccionada = null;
+			PersonaSeleccionada = new clsPersona();
 		}
 		public async void InsertarCommand_Executed()
 		{
-			clsPersona oPersona = new clsPersona();
-			PersonaSeleccionada = oPersona;
 			ContentDialog dialog; 
 			ContentDialogResult result;
 			int filas;
@@ -259,7 +260,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		public bool EditarCommand_CanExecute()
 		{
 			bool sePuedeMod = false;
-			if (_PersonaSeleccionada != null)
+			if (_PersonaSeleccionada != null && InsertarCommand_CanExecute() == false)
 			{
 				sePuedeMod = true;
 			}
@@ -282,8 +283,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 					CloseButtonText = "Ok"
 				};
 				result = await dialog.ShowAsync();
-				_ListadoDePersonas = listadoPersonas_BL.listado();
-				NotifyPropertyChanged("ListadoDePersonas");
+				ActualizarListaCommand_Executed();
 			}
 			catch (Exception e)
 			{
