@@ -16,6 +16,9 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		#region Propiedades Privadas
 		private clsPersona _PersonaSeleccionada;
 		private List<clsPersona> _ListadoDePersonas;
+		private List<clsPersona> _ListadoBusqueda;
+		private String _texto;
+		private String _resultado;
 		private List<clsDepartamento> _ListadoDeDepartamentos;
 		private clsDepartamento _DepartamentoSeleccionado;
 		private DelegateCommand _eliminarCommand;
@@ -50,11 +53,12 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			set
 			{
 				_PersonaSeleccionada = value;
-
+				formularioVisible = "Visible";
 				//Llamamos a canExecute para que comprube si habilita el comando
 				_eliminarCommand.RaiseCanExecuteChanged();
 				_insertarCommand.RaiseCanExecuteChanged();
 				_editarCommand.RaiseCanExecuteChanged();
+				NotifyPropertyChanged("formularioVisible");
 				NotifyPropertyChanged("PersonaSeleccionada");
 			}
 		}
@@ -65,6 +69,32 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			set { _DepartamentoSeleccionado = value; NotifyPropertyChanged("DepartamentoSeleccionado"); }
 		}
 
+		public String Texto
+		{
+			get
+			{
+				return _texto;
+			}
+			set
+			{
+				_texto = value;
+				Resultado = FiltrarListado(_texto) + "resultados";
+				NotifyPropertyChanged("ListadoDePersonas");
+				NotifyPropertyChanged("resultadoBusqueda");
+			}
+		}
+
+		public String Resultado
+		{
+			get
+			{
+				return _resultado;
+			}
+			set { }
+		}
+
+		public String formularioVisible { get; set; }
+
 		#endregion
 
 		#region Constructores
@@ -72,7 +102,9 @@ namespace _15_CRUDPersonas_UI.ViewModels
 		{
 			ActualizarListaCommand_Executed();
 			_ListadoDePersonas = listadoPersonas_BL.listado();
+			_ListadoBusqueda = listadoPersonas_BL.listado();
 			_ListadoDeDepartamentos = listadoDepartamentos_BL.listado();
+			formularioVisible = "Collapsed";
 		}
 
 		#endregion
@@ -220,7 +252,7 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			int filas;
 
 			try
-			{
+			{ 
 				filas = manejadora_BL.InsertarPersona_BL(PersonaSeleccionada);
 				dialog = new ContentDialog
 				{
@@ -289,6 +321,49 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			{
 
 			}
+		}
+
+		#endregion
+
+		#region Busqueda
+
+		private int FiltrarListado(String texto)
+		{
+
+			_ListadoDePersonas = new List<clsPersona>();
+			_ListadoDePersonas = _ListadoBusqueda.Where(persona => persona.nombre.ToLower().Contains(texto.ToLower()) || persona.apellidos.ToLower().Contains(texto.ToLower())).ToList();
+
+			return 0;
+		}
+
+		#endregion
+
+		#region Visibilidad
+
+		public void alternarVisibilidadFormulario()
+		{
+
+			if (formularioVisible.Equals("Visible"))
+			{
+				formularioVisible = "Collapsed";
+			}
+			else
+			{
+				formularioVisible = "Visible";
+			}
+			NotifyPropertyChanged("formularioVisible");
+		}
+
+		public void MostrarFormulario()
+		{
+			formularioVisible = "Visible";
+			NotifyPropertyChanged("formularioVisible");
+		}
+
+		public void OcultarFormulario()
+		{
+			formularioVisible = "Collapsed";
+			NotifyPropertyChanged("formularioVisible");
 		}
 
 		#endregion

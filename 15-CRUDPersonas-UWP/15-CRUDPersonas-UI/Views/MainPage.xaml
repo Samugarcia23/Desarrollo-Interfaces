@@ -12,7 +12,7 @@
     <Page.DataContext>
         <vm:MainPageViewModel/>
     </Page.DataContext>
-    
+
     <RelativePanel>
         <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <Grid.RowDefinitions>
@@ -22,15 +22,16 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="6*"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Resultado}" Name="resultadoBusqueda"/>
                 <ScrollViewer x:Name="scrScroll" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" Grid.Column="0" Grid.Row="0">
                     <Grid>
-                        <ListView Name="listaPersonas" SelectionChanged="listaPersonas_SelectionChanged" ItemsSource="{Binding ListadoDePersonas}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
+                        <ListView Name="listaPersonas" SelectionChanged="listaPersonas_SelectionChanged" RightTapped="listaPersonas_RightTapped" ItemsSource="{Binding ListadoDePersonas}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
@@ -39,48 +40,55 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
+                            <ListView.Resources>
+                                <MenuFlyout x:Name="mflyMenuFlyout">
+                                    <MenuFlyoutItem Command="{Binding Path=editarCommand}" Icon="Edit" Text="Modificar"/>
+                                    <MenuFlyoutItem Command="{Binding Path=eliminarCommand}" Icon="Delete" Text="Eliminar"/>
+                                </MenuFlyout>
+                            </ListView.Resources>
                         </ListView>
                     </Grid>
                 </ScrollViewer>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Button Name="addPersona" Background="AntiqueWhite" Command="{Binding Path=prepararInsertCommand}" Content="Añadir Nuevo"  Click="addPersona_Click" Margin="0,0,10,0"></Button>
                     <Button Name="btnActualizarLista" Grid.Row="1" Background="AntiqueWhite" Content="Actualizar" Command="{Binding Path=actualizarListaCommand}"></Button>
-                    <!--cambiar-->
-                    <SearchBox x:Name="mySearchBox" 
-                        FocusOnKeyboardInput="True"
+                    <TextBox x:Name="mySearchBox" 
                         Margin="10,0,0,0"
-                        Width="auto" ChooseSuggestionOnEnter="False"
-                        SearchHistoryEnabled="True" PlaceholderText="Buscar"/>
+                        PlaceholderText="Buscar Personas"
+                        Width="130"
+                        TextWrapping="NoWrap"     
+                        Text="{Binding Path=Texto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </StackPanel>
-                
+
             </Grid>
 
-            <Grid RelativePanel.RightOf="scrScroll"  Name="grLista" Grid.Row="0" Grid.Column="1">
+            <Grid RelativePanel.RightOf="scrScroll"  Name="grLista" Grid.Row="0" Grid.Column="1" Visibility="{Binding formularioVisible}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="143*"></RowDefinition>
+                    <RowDefinition Height="143*"></RowDefinition>
+                    <RowDefinition Height="119*"></RowDefinition>
+                    <RowDefinition Height="24*"/>
+                    <RowDefinition Height="143*"></RowDefinition>
+                    <RowDefinition Height="143*"></RowDefinition>
+                    <RowDefinition Height="143*"></RowDefinition>
+                    <RowDefinition Height="142*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Vertical" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TextBox Name="txtNombre"  Margin="5,0,0,0" PlaceholderText="Nombre" Text="{Binding Path=PersonaSeleccionada.nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
+                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
+                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch">
                     <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10">
+                <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TextBox Name="txtTelefono" Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10">
+                <StackPanel Grid.Row="5" Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TextBox Name="txtDireccion" Margin="5,0,0,0" PlaceholderText="Direccion" Text="{Binding Path=PersonaSeleccionada.direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="5" Margin="15,15,0,0" Width="auto">
+                <StackPanel Grid.Row="6" Margin="15,15,0,0" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ComboBox Name="comboBox" ItemsSource="{Binding ListadoDeDepartamentos}" 
                               DisplayMemberPath="nombreDepartamento" 
                               SelectedValuePath="idDepartamento" 
@@ -90,7 +98,7 @@
                               HorizontalAlignment="Left" VerticalAlignment="Top">
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Stretch" >
                     <Button Name="btnAdd" Background="AntiqueWhite" Command="{Binding Path=insertCommand}" Margin="0,0,5,0" Content="Añadir"></Button>
                     <Button Name="btnModificar" Background="AntiqueWhite" Content="Modificar"  Command="{Binding Path=editarCommand}"></Button>
                     <Button Name="btnEliminar" Background="AntiqueWhite" Command="{Binding Path=eliminarCommand}" Content="Eliminar" Margin="5,0,0,0"></Button>

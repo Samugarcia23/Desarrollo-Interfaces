@@ -1,4 +1,5 @@
-﻿using _15_CRUDPersonas_UI.ViewModels;
+﻿using _15_CRUDPersonas_Entidades;
+using _15_CRUDPersonas_UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,5 +38,12 @@ namespace _15_CRUDPersonas_UI
 		{
 		}
 
+		private void listaPersonas_RightTapped(object sender, RightTappedRoutedEventArgs e)
+		{
+			ListView lista = (ListView)sender;
+			mflyMenuFlyout.ShowAt(lista, e.GetPosition(lista));
+			clsPersona oPersonaSeleccionada = (clsPersona)((FrameworkElement)e.OriginalSource).DataContext;
+			this.listaPersonas.SelectedItem = oPersonaSeleccionada;
+		}
 	}
 }
