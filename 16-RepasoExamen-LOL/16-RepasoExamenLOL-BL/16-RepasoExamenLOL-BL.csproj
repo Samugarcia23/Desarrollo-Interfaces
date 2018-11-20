@@ -107,6 +107,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Listados\clsListadoCategorias_BL.cs" />
+    <Compile Include="Listados\clsListadoPersonajes_BL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\_16_RepasoExamenLOL_BL.rd.xml" />
   </ItemGroup>
@@ -126,7 +128,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Listados\" />
     <Folder Include="Manejadoras\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

@@ -5,18 +5,24 @@
     xmlns:local="using:_16_RepasoExamen_LOL"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_16_RepasoExamen_LOL.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+
     <RelativePanel>
+        
         <!--Lista de Categorias-->
         <ScrollViewer x:Name="scrScrollCat" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <Grid>
-                <ListView Name="listadoCategorias" ItemsSource="{Binding ListadoDeCategorias}" SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}">
+                <ListView Name="listadoCategorias" ItemsSource="{Binding listadoCategorias}" SelectedItem="{Binding categoriaSeleccionada, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
-                                <TextBlock Text="{Binding Path=nombre, Mode=TwoWay}"/>
+                                <TextBlock Text="{Binding Path=nombreCategoria, Mode=TwoWay}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -27,7 +33,7 @@
         <!--Lista de Personajes-->
         <ScrollViewer x:Name="scrScrollCamp" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="scrScrollCat">
             <Grid>
-                <ListView Name="listadoCampeones" ItemsSource="{Binding ListadoDeCampeones}" SelectedItem="{Binding CampeonSeleccionado, Mode=TwoWay}">
+                <ListView Name="listadoCampeones" ItemsSource="{Binding listadoPersonajes}" SelectedItem="{Binding personajeSeleccionado, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
@@ -41,8 +47,56 @@
         </ScrollViewer>
         
         <!--Detalles de Campeones-->
-        <RelativePanel>
-           
+        <RelativePanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="scrScrollCamp">
+            
+            <StackPanel Name="stpMainInfo" Orientation="Vertical" HorizontalAlignment="Center" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                <Image Source="{Binding Path=nombre}"></Image>
+                <TextBlock></TextBlock>
+                <TextBlock></TextBlock>
+                <TextBlock></TextBlock>
+            </StackPanel>
+
+            <StackPanel Name="stpVida" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpMainInfo">
+                <TextBlock Text="Vida"></TextBlock>
+                <ProgressBar ></ProgressBar>
+            </StackPanel>
+
+            <StackPanel Name="stpReg" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpVida">
+                <TextBlock Text="Regeneracion"></TextBlock>
+                <ProgressBar></ProgressBar>
+                <TextBlock></TextBlock>
+            </StackPanel>
+
+            <StackPanel Name="stpDanio" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpReg">
+                <TextBlock Text="Daño"></TextBlock>
+                <ProgressBar></ProgressBar>
+                <TextBlock></TextBlock>
+            </StackPanel>
+
+            <StackPanel Name="stpArm" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpDanio">
+                <TextBlock Text="Armadura"></TextBlock>
+                <ProgressBar></ProgressBar>
+                <TextBlock></TextBlock>
+            </StackPanel>
+
+            <StackPanel Name="stpVelAt" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpArm">
+                <TextBlock Text="Velocidad de Ataque"></TextBlock>
+                <ProgressBar></ProgressBar>
+                <TextBlock></TextBlock>
+            </StackPanel>
+
+            <StackPanel Name="stpRes" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpVelAt">
+                <TextBlock Text="Resistencia"></TextBlock>
+                <ProgressBar></ProgressBar>
+                <TextBlock></TextBlock>
+            </StackPanel>
+
+            <StackPanel Name="stpVelMov" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="stpRes" RelativePanel.AlignBottomWithPanel="True">
+                <TextBlock Text="Velocidad de Movimiento"></TextBlock>
+                <ProgressBar></ProgressBar>
+                <TextBlock></TextBlock>
+            </StackPanel>
+            
         </RelativePanel>
     </RelativePanel>
 </Page>

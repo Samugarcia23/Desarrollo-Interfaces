@@ -108,6 +108,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion\clsMyConnection.cs" />
+    <Compile Include="Listados\clsListadoCategorias_DAL.cs" />
+    <Compile Include="Listados\clsListadoPersonajes_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\_16_RepasoExamenLOL_DAL.rd.xml" />
   </ItemGroup>
@@ -123,7 +125,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Listados\" />
     <Folder Include="Manejadoras\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
