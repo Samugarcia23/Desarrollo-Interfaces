@@ -84,6 +84,16 @@ namespace _15_CRUDPersonas_UI.ViewModels
 			}
 		}
 
+		public List<clsPersona> ListadoBusqueda
+		{
+			get { return _ListadoBusqueda; }
+			set
+			{
+				_ListadoBusqueda = value;
+				NotifyPropertyChanged("ListadoBusqueda");
+			}
+		}
+
 		public String Resultado
 		{
 			get
@@ -200,6 +210,8 @@ namespace _15_CRUDPersonas_UI.ViewModels
 				_ListadoDePersonas = listadoPersonas_BL.listado();
 				NotifyPropertyChanged("PersonaSeleccionada");
 				NotifyPropertyChanged("ListadoDePersonas");
+				NotifyPropertyChanged("resultadoBusqueda");
+				NotifyPropertyChanged("ListadoBusqueda");
 			}
 			catch (Exception e)
 			{
@@ -263,6 +275,8 @@ namespace _15_CRUDPersonas_UI.ViewModels
 				result = await dialog.ShowAsync();
 				_ListadoDePersonas = listadoPersonas_BL.listado();
 				NotifyPropertyChanged("ListadoDePersonas");
+				NotifyPropertyChanged("resultadoBusqueda");
+				NotifyPropertyChanged("ListadoBusqueda");
 			}
 			catch (Exception e)
 			{

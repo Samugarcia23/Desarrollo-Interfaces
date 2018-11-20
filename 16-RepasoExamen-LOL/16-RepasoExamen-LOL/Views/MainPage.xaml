@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="_16_RepasoExamen_LOL.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_16_RepasoExamen_LOL"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+        <!--Lista de Categorias-->
+        <ScrollViewer x:Name="scrScrollCat" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <Grid>
+                <ListView Name="listadoCategorias" ItemsSource="{Binding ListadoDeCategorias}" SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
+                                <TextBlock Text="{Binding Path=nombre, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+        
+        <!--Lista de Personajes-->
+        <ScrollViewer x:Name="scrScrollCamp" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="scrScrollCat">
+            <Grid>
+                <ListView Name="listadoCampeones" ItemsSource="{Binding ListadoDeCampeones}" SelectedItem="{Binding CampeonSeleccionado, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
+                                <TextBlock Text="{Binding Path=nombre, Mode=TwoWay}"/>
+                                <TextBlock Text="{Binding Path=alias, Mode=TwoWay}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+        
+        <!--Detalles de Campeones-->
+        <RelativePanel>
+           
+        </RelativePanel>
+    </RelativePanel>
+</Page>
