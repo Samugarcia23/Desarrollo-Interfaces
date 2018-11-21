@@ -34,10 +34,10 @@ namespace _16_RepasoExamenLOL_DAL.Conexiones
         public clsMyConnection()
         {
             // this.server = "(local)";
-            this.server = "LAPTOP-7FP6R2GL";
+            this.server = "localhost";
             this.dataBase = "lol";
             this.user = "prueba2";
-            this.pass = "1234"; 
+            this.pass = "123"; 
 
         }
         //Con parámetros por si quisiera cambiar las conexiones
