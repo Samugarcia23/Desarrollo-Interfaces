@@ -6,12 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:_15_CRUDPersonas_UI.ViewModels"
+    xmlns:local1="using:_15_CRUDPersonas_UI.ViewModels.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
         <vm:MainPageViewModel/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <local1:clsConverterFechaCorta x:Key="converterFechaCorta"/>
+    </Page.Resources>
 
     <RelativePanel>
         <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
@@ -80,7 +85,7 @@
                     <TextBox Name="txtApellidos" Margin="5,0,0,0" PlaceholderText="Apellidos" Text="{Binding Path=PersonaSeleccionada.apellidos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch">
-                    <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Name="txtFechNac" Margin="5,0,0,0" PlaceholderText="Fecha de Nacimiento" Text="{Binding Path=PersonaSeleccionada.fechNacimiento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource converterFechaCorta}}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Orientation="Vertical" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TextBox Name="txtTelefono" Margin="5,0,0,0" PlaceholderText="Telefono" Text="{Binding Path=PersonaSeleccionada.telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>

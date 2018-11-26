@@ -1,0 +1,23 @@
+﻿<Application
+    x:Class="_18_EjemploResources_UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18_EjemploResources_UWP">
+
+    <Application.Resources>
+
+        <LinearGradientBrush x:Key="buttonBackgroundApp">
+            <GradientStop Offset="0.4" Color="LightPink"/>
+            <GradientStop Offset="0.2" Color="PaleGoldenrod"/>
+            <GradientStop Offset="0.1" Color="Khaki"/>
+            <GradientStop Offset="0.2" Color="Gold"/>
+            <GradientStop Offset="0.3" Color="RosyBrown"/>
+            <GradientStop Offset="0.5" Color="BlanchedAlmond"/>
+        </LinearGradientBrush>
+
+    </Application.Resources>
+    
+    
+
+
+</Application>

@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="_18_EjemploResources_UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18_EjemploResources_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <LinearGradientBrush x:Key="btnGradiente">
+            <GradientStop Offset="0.4" Color="GreenYellow"/>
+            <GradientStop Offset="0.2" Color="BlueViolet"/>
+            <GradientStop Offset="0.1" Color="LightBlue"/>
+            <GradientStop Offset="0.2" Color="Purple"/>
+            <GradientStop Offset="0.3" Color="White"/>
+            <GradientStop Offset="0.5" Color="DarkRed"/>
+        </LinearGradientBrush>
+
+        <ResourceDictionary x:Key="diccionario">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\MiDiccionario.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </Page.Resources>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button Content="Boton 1" Margin="0,0,10,0" Background="{StaticResource btnGradiente}"></Button>
+        <Button Content="Boton 2" Background="{StaticResource buttonBackgroundApp}" ></Button>
+        <Button Content="Boton 3" Margin="10,0,0,0" Background="{StaticResource diccionario}"></Button>
+    </StackPanel>
+</Page>
