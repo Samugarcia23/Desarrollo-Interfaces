@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19-CRUDPersonas-UI-xBind", "15-CRUDPersonas-UI\19-CRUDPersonas-UI-xBind.csproj", "{87B72E91-DC40-455F-A7D0-5DE9028DB7B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-CRUDPersonas-UI", "15-CRUDPersonas-UI\15-CRUDPersonas-UI.csproj", "{87B72E91-DC40-455F-A7D0-5DE9028DB7B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-CRUDPersonas-DAL", "15-CRUDPersonas-DAL\15-CRUDPersonas-DAL.csproj", "{C4EB667D-A1EE-4193-B9CE-DAF80196C52D}"
 EndProject

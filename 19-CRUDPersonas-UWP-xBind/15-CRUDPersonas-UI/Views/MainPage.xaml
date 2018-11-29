@@ -41,7 +41,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical" Height="auto" Padding="12" VerticalAlignment="Center" Margin="12,0,0,10">
-                                        <TextBlock Text="{x:Bind ViewModel.PersonaSeleccionada.nombre, Mode=TwoWay}"/>
+                                        <TextBlock Text="{Binding Path=nombre, Mode=TwoWay}"/>
                                         <TextBlock Text="{Binding Path=apellidos, Mode=TwoWay}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                                     </StackPanel>
                                 </DataTemplate>
@@ -56,8 +56,8 @@
                     </Grid>
                 </ScrollViewer>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Button Name="addPersona" Background="AntiqueWhite" Click="{x:Bind ViewModel.InsertarCommand_Executed}" Command="{Binding Path=prepararInsertCommand}" Content="Añadir Nuevo"  Click="addPersona_Click" Margin="0,0,10,0"></Button>
-                    <Button Name="btnActualizarLista" Grid.Row="1" Background="AntiqueWhite" Content="Actualizar" Click="{x:Bind ViewModel.ActualizarListaCommand_Executed}"></Button>
+                    <Button Name="addPersona" Background="AntiqueWhite" Command="{Binding Path=insertCommand}" Content="Añadir Nuevo"  Click="addPersona_Click" Margin="0,0,10,0"></Button>
+                    <Button Name="btnActualizarLista" Grid.Row="1" Background="AntiqueWhite" Content="Actualizar" Command="{Binding Path=actualizarListaCommand}"></Button>
                     <TextBox x:Name="mySearchBox" 
                         Margin="10,0,0,0"
                         PlaceholderText="Buscar Personas"
