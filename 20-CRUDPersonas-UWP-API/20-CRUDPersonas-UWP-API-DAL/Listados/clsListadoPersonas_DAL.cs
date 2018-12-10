@@ -21,23 +21,21 @@ namespace _20_CRUDPersonas_UWP_API_DAL.Listados
 		/// <returns></returns>
 		public async Task<List<clsPersona>> ListadoCompletoPersonas_DAL()
 		{
-			clsUriBase getUri = new clsUriBase();
-			List<clsPersona> listado = null;
+			clsUriBase clsUriBase = new clsUriBase();
+			String miURL = clsUriBase.uri;
+			Uri uri = new Uri($"{miURL}personas");
+			List<clsPersona> listado = new List<clsPersona>();
+			HttpClient httpClient = new HttpClient();
+			string respuesta;
 			try
 			{
-				using (HttpClient client = new HttpClient())
-				{
-					Uri myUri = new Uri(getUri.uri, UriKind.Absolute);
-					client.BaseAddress = myUri;
-					var data = await client.GetAsync(string.Concat(myUri, "routeName"));
-					var jsonResponse = await data.Content.ReadAsStringAsync();
-					HttpResponseMessage response = await client.GetAsync("personas");
-					if (jsonResponse != null)
-						listado = JsonConvert.DeserializeObject<List<clsPersona>>(jsonResponse);
-					return listado;
-				}
+				respuesta = await httpClient.GetStringAsync(uri);
+				httpClient.Dispose();
+				listado = JsonConvert.DeserializeObject<List<clsPersona>>(respuesta);
 			}
-			catch (WebException exception) { throw new WebException("An error has occurred while calling GetSampleClass method: " + exception.Message); }	
+			catch (WebException exception) {  }
+
+			return listado;
 		}
 	}
 }
