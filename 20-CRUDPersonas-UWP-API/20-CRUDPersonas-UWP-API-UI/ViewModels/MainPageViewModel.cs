@@ -1,5 +1,6 @@
 ﻿using _20_CRUDPersonas_UWP_API_DAL.Listados;
 using _20_CRUDPersonas_UWP_API_Entidades;
+using _20_CRUDPersonas_UWP_API_UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace _20_CRUDPersonas_UWP_API_DAL.ViewModels
 	{
 		#region Propiedades Privadas
 		private clsPersona _PersonaSeleccionada;
-		private List<clsPersona> _ListadoDePersonas;
+		private NotifyTaskCompletion<List<clsPersona>> _ListadoDePersonas;
 		private List<clsPersona> _ListadoBusqueda;
 		private String _texto;
 		private String _resultado;
@@ -34,7 +35,7 @@ namespace _20_CRUDPersonas_UWP_API_DAL.ViewModels
 		//clsListadoDepartamentos_BL listadoDepartamentos_BL = new clsListadoDepartamentos_BL();
 		//clsManeJadoraPersona_BL manejadora_BL = new clsManeJadoraPersona_BL();
 
-		public List<clsPersona> ListadoDePersonas
+		public NotifyTaskCompletion<List<clsPersona>> ListadoDePersonas
 		{
 			get { return _ListadoDePersonas; }
 			set { _ListadoDePersonas = value; }
@@ -110,16 +111,30 @@ namespace _20_CRUDPersonas_UWP_API_DAL.ViewModels
 		public MainPageViewModel()
 		{
 			//ActualizarListaCommand_Executed();
-			cargarAsync();
+			//cargarAsync();
 			//_ListadoBusqueda = listadoPersonas_BL.listado();
 			//_ListadoDeDepartamentos = listadoDepartamentos_BL.listado();
 			//formularioVisible = "Collapsed";
+			//_ListadoDePersonas = listadoPersonas_BL.listado();
 		}
 
+		/*
 		public async void cargarAsync()
 		{
 			_ListadoDePersonas = await listadoPersonas_BL.listado();
 		}
+		*/
+
+		/*
+		 public async Task<HttpStatusCode> actualizaPersonaDAL (clsPersona persona)
+		 {
+			HttpClient mihttpClient = new HttpClient();
+			string datos;
+			HttpContent contenido;
+			string miCadenaURL = clsUriBase.getUriBase();
+			Uri miUri = new Uri($"{miCadenaURL}Personas/{persona.id});
+		 }
+		 */
 
 		#endregion
 
