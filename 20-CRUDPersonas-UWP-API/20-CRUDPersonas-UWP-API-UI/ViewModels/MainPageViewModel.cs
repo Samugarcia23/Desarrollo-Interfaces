@@ -119,6 +119,7 @@ namespace _20_CRUDPersonas_UWP_API_DAL.ViewModels
 		}
 
 		/*
+		 
 		public async void cargarAsync()
 		{
 			_ListadoDePersonas = await listadoPersonas_BL.listado();

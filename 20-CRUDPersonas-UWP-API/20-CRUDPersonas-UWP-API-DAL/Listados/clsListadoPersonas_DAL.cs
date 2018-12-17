@@ -33,7 +33,7 @@ namespace _20_CRUDPersonas_UWP_API_DAL.Listados
 				httpClient.Dispose();
 				listado = JsonConvert.DeserializeObject<List<clsPersona>>(respuesta);
 			}
-			catch (WebException exception) {  }
+			catch (WebException exception) { }
 
 			return listado;
 		}
