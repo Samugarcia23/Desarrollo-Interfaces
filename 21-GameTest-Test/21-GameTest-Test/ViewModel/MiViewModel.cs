@@ -17,6 +17,7 @@ namespace _21_GameTest_Test.ViewModel
 		private int _counter;
 		private int _points;
 		private int _jugadoresConectados;
+		private int _maxPlayers;
 
 		#endregion
 
@@ -50,6 +51,12 @@ namespace _21_GameTest_Test.ViewModel
 			set { _points = value; NotifyPropertyChanged("points"); }
 		}
 
+		public int maxPlayers
+		{
+			get { return _maxPlayers; }
+			set { _maxPlayers = value; NotifyPropertyChanged("maxPlayers"); }
+		}
+
 		#endregion
 
 		#region Constructores
@@ -57,13 +64,12 @@ namespace _21_GameTest_Test.ViewModel
 		public MiViewModel()
 		{
 			_player = new clsPlayer();
-			_counter = 0;
+			_counter = 30;
 			_jugadoresConectados = 0;
 			_points = 0;
 		}
 
 		#endregion
 		
-
 	}
 }

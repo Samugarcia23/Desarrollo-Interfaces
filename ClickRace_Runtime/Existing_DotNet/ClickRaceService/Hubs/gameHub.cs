@@ -20,6 +20,7 @@ namespace ClickRaceService.Hubs
 		public override Task OnConnected()
 		{
 			Clients.Caller.actualizarPlayers(GameInfo.players.Count);
+			Clients.Caller.actualizarMaxPlayers(GameInfo.maxPlayers);
 
 			return base.OnConnected();
 		}
@@ -34,13 +35,13 @@ namespace ClickRaceService.Hubs
 
 		public void join(string name)
 		{
-			if (GameInfo.players.Count < 4)
+			if (GameInfo.players.Count < GameInfo.maxPlayers)
 			{
 				GameInfo.players.Add(Context.ConnectionId, new clsPlayer(name));
 				Clients.Caller.actualizarPuntos(0);
 				Clients.All.actualizarPlayers(GameInfo.players.Count);
 
-				if (GameInfo.players.Count == 4)
+				if (GameInfo.players.Count == GameInfo.maxPlayers)
 				{
 					gestionPartida();
 				}				

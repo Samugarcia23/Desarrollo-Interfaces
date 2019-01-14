@@ -11,6 +11,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,7 +35,8 @@ namespace _21_GameTest_Test
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-        }
+			ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+		}
 
         /// <summary>
         /// Se invoca cuando el usuario final inicia la aplicación normalmente. Se usarán otros puntos

@@ -9,8 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel Name="mainRp" PointerPressed="MainRp_PointerPressed">
-        <TextBox Name="tbUser" MaxLength="15" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="btnSend" Margin="15,10,15,0" PlaceholderText="UserName"/>
-        <Button Name="btnSend" Margin="0, 10, 15, 0" RelativePanel.AlignRightWithPanel="True" Content="Start" Click="BtnSend_Click"/>
+        <TextBox Name="tbUser" MaxLength="15" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="btnSend" Margin="15,10,15,0" PlaceholderText="Nombre de usuario"/>
+        <Button Name="btnSend" Margin="0, 10, 15, 0" RelativePanel.AlignRightWithPanel="True" Content="Jugar" Click="BtnSend_Click"/>
         <Grid Name="grImg" RelativePanel.Below="btnSend" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Margin="50,50,50,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -27,7 +27,8 @@
             <TextBlock Name="txtTiempo" Text="Tiempo:" Foreground="White" Margin="5,0,10,5" FontSize="30"/>
             <TextBlock Name="tiempo" Text="{Binding counter}" Foreground="White" RelativePanel.RightOf="txtTiempo" FontSize="30"/>
             <TextBlock Name="txtPlayers" Text="{Binding jugadoresConectados}" Foreground="White" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="30" Margin="0,0,0,5" />
-            <TextBlock Name="txtTotal" Text="/4" Foreground="White" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.RightOf="txtPlayers" FontSize="30" Margin="0,0,0,5" />
+            <TextBlock Name="txtTotal" Text="/" Foreground="White" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.RightOf="txtPlayers" FontSize="30" Margin="0,0,0,5" />
+            <TextBlock Name="txtMaxPlayers" Text="{Binding maxPlayers}" Foreground="White" RelativePanel.RightOf="txtTotal" FontSize="30" Margin="5,0,0,0" />
             <TextBlock Text="Haz click izquierdo en el numero para sumar puntos" Foreground="White" VerticalAlignment="Center" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" FontSize="20" RelativePanel.AlignRightWithPanel="True" Margin="0,0,10,0"/>
         </RelativePanel>
     </RelativePanel>
