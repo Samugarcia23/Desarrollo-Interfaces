@@ -9,6 +9,6 @@ namespace ClickRaceService.Gestora
 	public static class GameInfo
 	{
 		public static IDictionary<string, clsPlayer> players { get; set; }
-		public static int maxPlayers = 2;
+		public static int maxPlayers = 1;
 	}
 }
